@@ -12,8 +12,8 @@ namespace AppTaller
         public MySqlConnection cn = new MySqlConnection();
         public MySqlConnection ObtenerConeccion()
         {
-           cn = new MySqlConnection("server=162.144.57.183;Database=rwwpixbn_Taller;Uid=rwwpixbn_develop;Pwd=tatiana199024;");
-            //cn = new MySqlConnection("server=localhost;Database=tallercell;Uid=root;Pwd=;");
+            //cn = new MySqlConnection("server=162.144.57.183;Database=rwwpixbn_Taller;Uid=rwwpixbn_develop;Pwd=tatiana199024;");
+            cn = new MySqlConnection("server=localhost;Database=tallercell;Uid=root;Pwd=;");
             try
             {
                 cn.Open();

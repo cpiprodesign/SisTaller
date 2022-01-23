@@ -19,7 +19,12 @@ namespace AppTaller
 {
     public partial class Form1  : Form 
     {
-        conexion cn = new conexion();
+        conexion cn = new conexion();//
+        //datos de la empresa
+        string nombreEmpresa, direccion,email,Numero;
+        int telefono;
+        
+
         public Form1()
         {
             InitializeComponent();
@@ -62,6 +67,8 @@ namespace AppTaller
             Gettecnico();
             desabilitar();
             estados();
+            getEmpresa();
+           
            
         }
         public  void GetClient()
@@ -421,6 +428,7 @@ namespace AppTaller
                     if (dialogResult == DialogResult.Yes)
                     {
                         impri();
+                        //impri();
                     }
                       guardar();
                     limpiar();
@@ -464,9 +472,10 @@ namespace AppTaller
         }
         private void bunifuiOSSwitch1_OnValueChange(object sender, EventArgs e)
         {
-            estados();
+
+
             //bunifuiOSSwitch1.Value = true;
-           
+            estados();
 
 
         }
@@ -512,31 +521,40 @@ namespace AppTaller
 
             try
             {
-                MySqlCommand cmd = new MySqlCommand("UpdateOrden", cn.ObtenerConeccion());
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@idOrdenes", MySqlDbType.Int64).Value = textBox1.Text;
-                cmd.Parameters.Add("@idCliente", MySqlDbType.Int64).Value = label27.Text;
-                cmd.Parameters.Add("@Nombre", MySqlDbType.VarChar, 100).Value = txtequipo.Text;
-                cmd.Parameters.Add("@Marca", MySqlDbType.VarChar, 45).Value = txtmarca.Text;
-                cmd.Parameters.Add("@Modelo", MySqlDbType.VarChar, 45).Value = txtmodelo.Text;
-                cmd.Parameters.Add("@Serial", MySqlDbType.VarChar, 45).Value = txtserial.Text;
-                cmd.Parameters.Add("@Clave", MySqlDbType.VarChar, 45).Value = txtclave.Text;
-                cmd.Parameters.Add("@Accesorios", MySqlDbType.VarChar, 45).Value = txtobservaciones.Text;
-                cmd.Parameters.Add("@Observaciones", MySqlDbType.VarChar, 100).Value = txtobservaciones.Text;
-                cmd.Parameters.Add("@FallaEquipo", MySqlDbType.VarChar, 100).Value = txtfalla.Text;
-                cmd.Parameters.Add("@Reparacion", MySqlDbType.VarChar, 200).Value = txtreparacion.Text;
-                cmd.Parameters.Add("@FechaEntrada", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpentrada.Text);
-                cmd.Parameters.Add("@FechaEntrega", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpfechaentrega.Text);
-                cmd.Parameters.Add("@PagoAdelantado", MySqlDbType.Decimal).Value = txtpagoadelantado.Text;
-                cmd.Parameters.Add("@TotalPagar", MySqlDbType.Decimal).Value = txttotal.Text;
-                cmd.Parameters.Add("@Estado", MySqlDbType.VarChar, 50).Value = estado;
-                cmd.Parameters.Add("@IdEmpleado", MySqlDbType.Int64).Value = label26.Text;
-                cn.ObtenerConeccion();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("orden actualizado Corectamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //carga();
-                desabilitar();
-                cn.DescargarConexion();
+                if (txtpagoadelantado.Text != txttotal.Text)
+                {
+                    MessageBox.Show("Recuerda actualizar el pago por el servicio", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtpagoadelantado.Focus();
+                }
+                else
+                {
+                    MySqlCommand cmd = new MySqlCommand("UpdateOrden", cn.ObtenerConeccion());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@idOrdenes", MySqlDbType.Int64).Value = textBox1.Text;
+                    cmd.Parameters.Add("@idCliente", MySqlDbType.Int64).Value = label27.Text;
+                    cmd.Parameters.Add("@Nombre", MySqlDbType.VarChar, 100).Value = txtequipo.Text;
+                    cmd.Parameters.Add("@Marca", MySqlDbType.VarChar, 45).Value = txtmarca.Text;
+                    cmd.Parameters.Add("@Modelo", MySqlDbType.VarChar, 45).Value = txtmodelo.Text;
+                    cmd.Parameters.Add("@Serial", MySqlDbType.VarChar, 45).Value = txtserial.Text;
+                    cmd.Parameters.Add("@Clave", MySqlDbType.VarChar, 45).Value = txtclave.Text;
+                    cmd.Parameters.Add("@Accesorios", MySqlDbType.VarChar, 45).Value = txtobservaciones.Text;
+                    cmd.Parameters.Add("@Observaciones", MySqlDbType.VarChar, 100).Value = txtobservaciones.Text;
+                    cmd.Parameters.Add("@FallaEquipo", MySqlDbType.VarChar, 100).Value = txtfalla.Text;
+                    cmd.Parameters.Add("@Reparacion", MySqlDbType.VarChar, 200).Value = txtreparacion.Text;
+                    cmd.Parameters.Add("@FechaEntrada", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpentrada.Text);
+                    cmd.Parameters.Add("@FechaEntrega", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpfechaentrega.Text);
+                    cmd.Parameters.Add("@PagoAdelantado", MySqlDbType.Decimal).Value = txtpagoadelantado.Text;
+                    cmd.Parameters.Add("@TotalPagar", MySqlDbType.Decimal).Value = txttotal.Text;
+                    cmd.Parameters.Add("@Estado", MySqlDbType.VarChar, 50).Value = estado;
+                    cmd.Parameters.Add("@IdEmpleado", MySqlDbType.Int64).Value = label26.Text;
+                    cn.ObtenerConeccion();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("orden actualizado Corectamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //carga();
+                    desabilitar();
+                    cn.DescargarConexion();
+                }
+               
             }
             catch (Exception ex)
             {
@@ -622,7 +640,7 @@ namespace AppTaller
             cliente = cboclientes.Text;
            
             //e.Graphics.DrawString("BOTICA", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(50, 15));
-            e.Graphics.DrawString("CPIPRODESIGN", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 10));
+            e.Graphics.DrawString(nombreEmpresa, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(5, 10));
             e.Graphics.DrawString("Nro:Orden: " + textBox1.Text, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(5, 30));
             e.Graphics.DrawString("" + DateTime.Now, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(80, 30));
 
@@ -635,7 +653,7 @@ namespace AppTaller
             e.Graphics.DrawString("Accesorios: " + txtaccesorio.Text, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(5, 100));
             e.Graphics.DrawString("_________________________________________", new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(3, 110));
 
-            e.Graphics.DrawString("CARACTERISTICAS DE FALLO:", new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(30, 123));
+            e.Graphics.DrawString("OBSERVACIONES:", new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(30, 123));
             e.Graphics.DrawString("_________________________________________", new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(3, 130));
 
             e.Graphics.DrawString("Falla de equipo: " + txtfalla.Text, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(5, 140));
@@ -650,6 +668,73 @@ namespace AppTaller
 
             e.Graphics.DrawImage(image, 50, 240, image.Width, image.Height);
 
+
+
+            //e.Graphics.DrawString("TELEFONO: " + telefon, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(5, 50));
+            //e.Graphics.DrawString("EMAIL: " + email, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(5, 60));
+            //e.Graphics.DrawString("_________________________________________", new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(3, 70));
+            //factura o boleta
+
+
+
+
+
+
+
+
+        }
+        //ticket 80
+        private void printDocument_PrintPagePequeñoGrande(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //Image i = new Bitmap(200, 50);
+            //Graphics g = Graphics.FromImage(i);
+            //obtener id
+            //Image image = Resources.;
+            Image image = panel1.BackgroundImage;
+            string cliente;
+            cliente = cboclientes.Text;
+
+            //e.Graphics.DrawString("BOTICA", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(50, 15));
+            e.Graphics.DrawString(nombreEmpresa, new Font("Arial", 12, FontStyle.Bold), Brushes.Black, new Point(30, 1));
+            e.Graphics.DrawString(direccion, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 17));
+
+            e.Graphics.DrawString(  "Telefono: " +Convert.ToString(telefono), new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 27));
+            e.Graphics.DrawString("Orden NO: " + textBox1.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 37));
+            e.Graphics.DrawString("" + DateTime.Now, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(120, 37));
+
+            e.Graphics.DrawString("Cliente: " + cliente, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 47));
+            e.Graphics.DrawString("_________________________________________", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 50));
+            e.Graphics.DrawString("DATOS DEL EQUIPO:", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(50, 65));
+            e.Graphics.DrawString("_________________________________________", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 70));
+            e.Graphics.DrawString("Equipo: " + txtequipo.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 83));
+            e.Graphics.DrawString("Marca: " + txtmarca.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 93));
+            e.Graphics.DrawString("Accesorios: " + txtaccesorio.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 103));
+            e.Graphics.DrawString("_________________________________________", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 110));
+
+            e.Graphics.DrawString("OBSERVACIONES:", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(30, 124));
+            e.Graphics.DrawString("_________________________________________", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 130));
+
+            e.Graphics.DrawString("Obs: " + txtfalla.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 142));
+            e.Graphics.DrawString("Rep: " + txtreparacion.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 152));
+            //e.Graphics.DrawString("Fecha de ingreso: " + dtpentrada.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 163));
+            e.Graphics.DrawString("Fecha de Entrega: " + dtpfechaentrega.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 173));
+            e.Graphics.DrawString("_________________________________________", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 180));
+
+            //e.Graphics.DrawString("Pago adelanto: " + txtpagoadelantado.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 200));
+            //e.Graphics.DrawString("Saldo : " + txtsaldo.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 210));
+            //e.Graphics.DrawString("Total por servicio: " + txttotal.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 220));
+
+            //e.Graphics.DrawString("Saldo : " + txtsaldo.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 210));
+            e.Graphics.DrawString("Total por servicio: " + txttotal.Text + " $ ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 200));
+            e.Graphics.DrawString("Pago adelantado: " + txtpagoadelantado.Text + " $ ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 210));
+            e.Graphics.DrawString("Pendiente : "  + txtsaldo.Text + " $ ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 220));
+
+
+            e.Graphics.DrawImage(image, 80, 240, image.Width, image.Height);
+            e.Graphics.DrawString("La fecha de entrega es condicional.", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(50, 340));
+            e.Graphics.DrawString(" Puede variar según disponibilidad de repuesto.", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 350));
+            e.Graphics.DrawString(" * ESTIMADO CLIENTE CONSERVE SU TICKET *", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 362));
+            //e.Graphics.DrawString(" Puede variar según disponibilidad de repuesto.. : " + txttotal.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 280));
 
 
             //e.Graphics.DrawString("TELEFONO: " + telefon, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(5, 50));
@@ -701,11 +786,11 @@ namespace AppTaller
                 generarQr();
                 //printDocument.Print();
                 PrintDocument pd = new PrintDocument();
-                PaperSize ps = new PaperSize("Boleta", 200, 400);
+                //PaperSize ps = new PaperSize("Boleta", 200, 400);
                 //medida para ticketera 80
-                // PaperSize ps = new PaperSize("Boleta", 300, 800);
+                 PaperSize ps = new PaperSize("Boleta", 300, 380);
 
-                pd.PrintPage += new PrintPageEventHandler(printDocument_PrintPagePequeño);
+                pd.PrintPage += new PrintPageEventHandler(printDocument_PrintPagePequeñoGrande);
 
                 pd.PrintController = new StandardPrintController();
                 pd.DefaultPageSettings.Margins.Left = 0;
@@ -743,7 +828,7 @@ namespace AppTaller
             panel1.BackgroundImage = imagen;
 
             // Guardar en el disco duro la imagen (Carpeta del proyecto)
-            imagen.Save("imagen.png", ImageFormat.Png);
+           // imagen.Save("imagen.png", ImageFormat.Png);
             
         }
 
@@ -759,6 +844,40 @@ namespace AppTaller
             desabilitar();
             bunifuFlatButton5.Visible = false;
             btncancelar.Visible = false;
+        }
+
+        private void Lblestado_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void getEmpresa()
+        {
+            try
+            {
+               MySqlCommand cmd = new MySqlCommand("select*from empresa  ", cn.ObtenerConeccion());
+                cmd.CommandType = CommandType.Text;
+
+               MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read() == true)
+                {
+                    direccion = dr["direccion"].ToString();
+                    nombreEmpresa = dr["NombreComercial"].ToString();
+                    Numero =Convert.ToString (dr["Numero"].ToString());
+                    
+                    telefono =Convert.ToInt32 (dr["telefono"].ToString());
+                    email = dr["email"].ToString();
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+
+            }
         }
     }
 }

@@ -35,6 +35,19 @@ namespace AppTaller
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
             this.lbhora = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.bunifuFlatButton7 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -104,26 +117,13 @@ namespace AppTaller
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label29 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label31 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label32 = new System.Windows.Forms.Label();
-            this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
+            this.bunifuCards2.SuspendLayout();
+            this.bunifuCards1.SuspendLayout();
             this.panelfechas.SuspendLayout();
             this.bunifuCards3.SuspendLayout();
             this.panelequipo.SuspendLayout();
             this.panelclientes.SuspendLayout();
-            this.bunifuCards1.SuspendLayout();
-            this.bunifuCards2.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -182,13 +182,180 @@ namespace AppTaller
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
             // 
+            // bunifuCards2
+            // 
+            this.bunifuCards2.BackColor = System.Drawing.Color.Crimson;
+            this.bunifuCards2.BorderRadius = 20;
+            this.bunifuCards2.BottomSahddow = true;
+            this.bunifuCards2.color = System.Drawing.Color.DeepPink;
+            this.bunifuCards2.Controls.Add(this.label37);
+            this.bunifuCards2.Controls.Add(this.label36);
+            this.bunifuCards2.Controls.Add(this.label38);
+            this.bunifuCards2.LeftSahddow = false;
+            this.bunifuCards2.Location = new System.Drawing.Point(996, 262);
+            this.bunifuCards2.Name = "bunifuCards2";
+            this.bunifuCards2.RightSahddow = true;
+            this.bunifuCards2.ShadowDepth = 20;
+            this.bunifuCards2.Size = new System.Drawing.Size(192, 111);
+            this.bunifuCards2.TabIndex = 44;
+            this.bunifuCards2.Visible = false;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.Color.Cyan;
+            this.label37.Location = new System.Drawing.Point(30, 48);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(49, 36);
+            this.label37.TabIndex = 44;
+            this.label37.Text = "s/.";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.Cyan;
+            this.label36.Location = new System.Drawing.Point(84, 50);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(69, 36);
+            this.label36.TabIndex = 43;
+            this.label36.Text = "300";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label38.Location = new System.Drawing.Point(29, 20);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(119, 20);
+            this.label38.TabIndex = 41;
+            this.label38.Text = "Servicios hoy.";
+            // 
+            // bunifuCards1
+            // 
+            this.bunifuCards1.BackColor = System.Drawing.Color.SpringGreen;
+            this.bunifuCards1.BorderRadius = 20;
+            this.bunifuCards1.BottomSahddow = true;
+            this.bunifuCards1.color = System.Drawing.Color.LimeGreen;
+            this.bunifuCards1.Controls.Add(this.label35);
+            this.bunifuCards1.Controls.Add(this.label34);
+            this.bunifuCards1.Controls.Add(this.label33);
+            this.bunifuCards1.LeftSahddow = false;
+            this.bunifuCards1.Location = new System.Drawing.Point(996, 139);
+            this.bunifuCards1.Name = "bunifuCards1";
+            this.bunifuCards1.RightSahddow = true;
+            this.bunifuCards1.ShadowDepth = 20;
+            this.bunifuCards1.Size = new System.Drawing.Size(192, 111);
+            this.bunifuCards1.TabIndex = 40;
+            this.bunifuCards1.Visible = false;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.label35.Location = new System.Drawing.Point(67, 60);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(51, 36);
+            this.label35.TabIndex = 43;
+            this.label35.Text = "10";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label34.Location = new System.Drawing.Point(51, 32);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(102, 20);
+            this.label34.TabIndex = 42;
+            this.label34.Text = "Entregados";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label33.Location = new System.Drawing.Point(29, 8);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(130, 20);
+            this.label33.TabIndex = 41;
+            this.label33.Text = "Dispositivos no";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label32.Location = new System.Drawing.Point(1060, 512);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(89, 17);
+            this.label32.TabIndex = 39;
+            this.label32.Text = "cpiprodesign";
+            this.label32.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.Location = new System.Drawing.Point(1006, 496);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(48, 51);
+            this.panel3.TabIndex = 38;
+            this.panel3.Visible = false;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label31.Location = new System.Drawing.Point(1060, 454);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(104, 17);
+            this.label31.TabIndex = 38;
+            this.label31.Text = "+51935667172";
+            this.label31.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.Location = new System.Drawing.Point(1006, 439);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(48, 51);
+            this.panel2.TabIndex = 37;
+            this.panel2.Visible = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label29.Location = new System.Drawing.Point(1024, 407);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(125, 20);
+            this.label29.TabIndex = 36;
+            this.label29.Text = "Soporte tecnico:";
+            this.label29.Visible = false;
+            // 
             // lbhora
             // 
             this.lbhora.AutoSize = true;
             this.lbhora.BackColor = System.Drawing.Color.Transparent;
             this.lbhora.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbhora.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lbhora.Location = new System.Drawing.Point(705, 97);
+            this.lbhora.Location = new System.Drawing.Point(812, 97);
             this.lbhora.Name = "lbhora";
             this.lbhora.Size = new System.Drawing.Size(70, 26);
             this.lbhora.TabIndex = 32;
@@ -200,7 +367,7 @@ namespace AppTaller
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label30.Location = new System.Drawing.Point(643, 99);
+            this.label30.Location = new System.Drawing.Point(750, 99);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(56, 24);
             this.label30.TabIndex = 31;
@@ -391,6 +558,7 @@ namespace AppTaller
             this.Lblestado.Size = new System.Drawing.Size(120, 25);
             this.Lblestado.TabIndex = 45;
             this.Lblestado.Text = "Entregado";
+            this.Lblestado.Click += new System.EventHandler(this.Lblestado_Click);
             // 
             // label28
             // 
@@ -1358,166 +1526,6 @@ namespace AppTaller
             this.panel1.TabIndex = 30;
             this.panel1.Visible = false;
             // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label29.Location = new System.Drawing.Point(1024, 407);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(125, 20);
-            this.label29.TabIndex = 36;
-            this.label29.Text = "Soporte tecnico:";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.Location = new System.Drawing.Point(1006, 439);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(48, 51);
-            this.panel2.TabIndex = 37;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label31.Location = new System.Drawing.Point(1060, 454);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(104, 17);
-            this.label31.TabIndex = 38;
-            this.label31.Text = "+51935667172";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.Location = new System.Drawing.Point(1006, 496);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(48, 51);
-            this.panel3.TabIndex = 38;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label32.Location = new System.Drawing.Point(1060, 512);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(89, 17);
-            this.label32.TabIndex = 39;
-            this.label32.Text = "cpiprodesign";
-            // 
-            // bunifuCards1
-            // 
-            this.bunifuCards1.BackColor = System.Drawing.Color.SpringGreen;
-            this.bunifuCards1.BorderRadius = 20;
-            this.bunifuCards1.BottomSahddow = true;
-            this.bunifuCards1.color = System.Drawing.Color.LimeGreen;
-            this.bunifuCards1.Controls.Add(this.label35);
-            this.bunifuCards1.Controls.Add(this.label34);
-            this.bunifuCards1.Controls.Add(this.label33);
-            this.bunifuCards1.LeftSahddow = false;
-            this.bunifuCards1.Location = new System.Drawing.Point(996, 139);
-            this.bunifuCards1.Name = "bunifuCards1";
-            this.bunifuCards1.RightSahddow = true;
-            this.bunifuCards1.ShadowDepth = 20;
-            this.bunifuCards1.Size = new System.Drawing.Size(192, 111);
-            this.bunifuCards1.TabIndex = 40;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label33.Location = new System.Drawing.Point(29, 8);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(130, 20);
-            this.label33.TabIndex = 41;
-            this.label33.Text = "Dispositivos no";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Transparent;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label34.Location = new System.Drawing.Point(51, 32);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(102, 20);
-            this.label34.TabIndex = 42;
-            this.label34.Text = "Entregados";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.MediumOrchid;
-            this.label35.Location = new System.Drawing.Point(67, 60);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(51, 36);
-            this.label35.TabIndex = 43;
-            this.label35.Text = "10";
-            // 
-            // bunifuCards2
-            // 
-            this.bunifuCards2.BackColor = System.Drawing.Color.Crimson;
-            this.bunifuCards2.BorderRadius = 20;
-            this.bunifuCards2.BottomSahddow = true;
-            this.bunifuCards2.color = System.Drawing.Color.DeepPink;
-            this.bunifuCards2.Controls.Add(this.label37);
-            this.bunifuCards2.Controls.Add(this.label36);
-            this.bunifuCards2.Controls.Add(this.label38);
-            this.bunifuCards2.LeftSahddow = false;
-            this.bunifuCards2.Location = new System.Drawing.Point(996, 262);
-            this.bunifuCards2.Name = "bunifuCards2";
-            this.bunifuCards2.RightSahddow = true;
-            this.bunifuCards2.ShadowDepth = 20;
-            this.bunifuCards2.Size = new System.Drawing.Size(192, 111);
-            this.bunifuCards2.TabIndex = 44;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.Color.Cyan;
-            this.label36.Location = new System.Drawing.Point(84, 50);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(69, 36);
-            this.label36.TabIndex = 43;
-            this.label36.Text = "300";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.Transparent;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label38.Location = new System.Drawing.Point(29, 20);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(119, 20);
-            this.label38.TabIndex = 41;
-            this.label38.Text = "Servicios hoy.";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.Transparent;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.Color.Cyan;
-            this.label37.Location = new System.Drawing.Point(30, 48);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(49, 36);
-            this.label37.TabIndex = 44;
-            this.label37.Text = "s/.";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1532,6 +1540,10 @@ namespace AppTaller
             this.Load += new System.EventHandler(this.Form1_Load);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            this.bunifuCards2.ResumeLayout(false);
+            this.bunifuCards2.PerformLayout();
+            this.bunifuCards1.ResumeLayout(false);
+            this.bunifuCards1.PerformLayout();
             this.panelfechas.ResumeLayout(false);
             this.panelfechas.PerformLayout();
             this.bunifuCards3.ResumeLayout(false);
@@ -1540,10 +1552,6 @@ namespace AppTaller
             this.panelequipo.PerformLayout();
             this.panelclientes.ResumeLayout(false);
             this.panelclientes.PerformLayout();
-            this.bunifuCards1.ResumeLayout(false);
-            this.bunifuCards1.PerformLayout();
-            this.bunifuCards2.ResumeLayout(false);
-            this.bunifuCards2.PerformLayout();
             this.ResumeLayout(false);
 
         }
