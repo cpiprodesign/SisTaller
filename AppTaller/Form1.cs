@@ -68,6 +68,7 @@ namespace AppTaller
             desabilitar();
             estados();
             getEmpresa();
+            getlistarOrdenes();
            
            
         }
@@ -421,6 +422,11 @@ namespace AppTaller
                     MessageBox.Show("Debes ingresar pago adelantado", "Sistema");
                     txtpagoadelantado.Focus();
                 }
+                else if (Convert.ToDecimal(txtpagoadelantado.Text) > Convert.ToDecimal(txttotal.Text))
+                {
+                    MessageBox.Show("El pago adelantado no debe ser mayor al pago total", "Sistema");
+                    txtpagoadelantado.Focus();
+                }
 
                 else
                 {
@@ -428,7 +434,8 @@ namespace AppTaller
                     if (dialogResult == DialogResult.Yes)
                     {
                         impri();
-                        //impri();
+                        //para imprimir dos veves
+                        impri();
                     }
                       guardar();
                     limpiar();
@@ -846,8 +853,24 @@ namespace AppTaller
             btncancelar.Visible = false;
         }
 
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            getlistarOrdenes();
+        }
+
         private void Lblestado_Click(object sender, EventArgs e)
         {
+
+        }
+        private void getlistarOrdenes()
+        {
+            int lista;
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT *FROM orden WHERE Estado='No Entregado'", cn.ObtenerConeccion());
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            //dataGridView1.DataSource = dt;
+            lista = dt.Rows.Count;
+            label35.Text = Convert.ToString(lista);
 
         }
         private void getEmpresa()
@@ -880,4 +903,6 @@ namespace AppTaller
             }
         }
     }
+    
+    
 }

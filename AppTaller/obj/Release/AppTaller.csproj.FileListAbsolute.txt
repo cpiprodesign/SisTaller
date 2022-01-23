@@ -79,3 +79,4 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.cs
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.csproj.CopyComplete
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.exe
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.pdb
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.csproj.AssemblyReference.cache

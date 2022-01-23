@@ -117,6 +117,7 @@ namespace AppTaller
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
             this.bunifuCards2.SuspendLayout();
             this.bunifuCards1.SuspendLayout();
@@ -238,10 +239,10 @@ namespace AppTaller
             // 
             // bunifuCards1
             // 
-            this.bunifuCards1.BackColor = System.Drawing.Color.SpringGreen;
+            this.bunifuCards1.BackColor = System.Drawing.Color.Crimson;
             this.bunifuCards1.BorderRadius = 20;
             this.bunifuCards1.BottomSahddow = true;
-            this.bunifuCards1.color = System.Drawing.Color.LimeGreen;
+            this.bunifuCards1.color = System.Drawing.Color.DeepPink;
             this.bunifuCards1.Controls.Add(this.label35);
             this.bunifuCards1.Controls.Add(this.label34);
             this.bunifuCards1.Controls.Add(this.label33);
@@ -252,14 +253,13 @@ namespace AppTaller
             this.bunifuCards1.ShadowDepth = 20;
             this.bunifuCards1.Size = new System.Drawing.Size(192, 111);
             this.bunifuCards1.TabIndex = 40;
-            this.bunifuCards1.Visible = false;
             // 
             // label35
             // 
             this.label35.AutoSize = true;
             this.label35.BackColor = System.Drawing.Color.Transparent;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.MediumOrchid;
+            this.label35.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label35.Location = new System.Drawing.Point(67, 60);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(51, 36);
@@ -532,7 +532,7 @@ namespace AppTaller
             this.btncancelar.IconVisible = true;
             this.btncancelar.IconZoom = 90D;
             this.btncancelar.IsTab = false;
-            this.btncancelar.Location = new System.Drawing.Point(411, 51);
+            this.btncancelar.Location = new System.Drawing.Point(411, 52);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.btncancelar.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
@@ -1526,6 +1526,11 @@ namespace AppTaller
             this.panel1.TabIndex = 30;
             this.panel1.Visible = false;
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1644,6 +1649,7 @@ namespace AppTaller
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
