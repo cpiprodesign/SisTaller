@@ -81,3 +81,4 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.cspr
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.exe
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.pdb
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.AssemblyReference.cache
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Frmempresa.resources
