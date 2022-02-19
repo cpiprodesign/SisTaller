@@ -858,6 +858,18 @@ namespace AppTaller
             getlistarOrdenes();
         }
 
+        private void bunifuFlatButton8_Click(object sender, EventArgs e)
+        {
+            Frmempresa f = new Frmempresa();
+            f.ShowDialog();
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            Form4 fr = new Form4();
+            fr.ShowDialog();
+        }
+
         private void Lblestado_Click(object sender, EventArgs e)
         {
 

@@ -81,6 +81,7 @@ namespace AppTaller
             // 
             // txtlogo
             // 
+            this.txtlogo.Enabled = false;
             this.txtlogo.Location = new System.Drawing.Point(105, 90);
             this.txtlogo.Name = "txtlogo";
             this.txtlogo.Size = new System.Drawing.Size(154, 20);
@@ -193,6 +194,7 @@ namespace AppTaller
             this.btnguardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnguardar.Textcolor = System.Drawing.Color.White;
             this.btnguardar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 
             // Frmempresa
             // 
@@ -219,6 +221,7 @@ namespace AppTaller
             this.Name = "Frmempresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuracion de tu taller";
+            this.Load += new System.EventHandler(this.Frmempresa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

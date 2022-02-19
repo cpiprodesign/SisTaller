@@ -16,7 +16,7 @@ namespace AppTaller
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frmempresa());
+            Application.Run(new Form1());
         }
     }
 }
