@@ -103,7 +103,7 @@ namespace AppTaller
         {
             //m_frm.button1.Text = "holllalal";
             m_frm.actualizarCliente();
-
+            //this.Close();
             //DialogResult dialogo = MessageBox.Show("¿Desea cerrar el programa?",
             //   "Cerrar el programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             //if (dialogo == DialogResult.No)

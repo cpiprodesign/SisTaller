@@ -43,6 +43,9 @@ namespace AppTaller
             this.label4 = new System.Windows.Forms.Label();
             this.txtcobrar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtnombre = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +95,7 @@ namespace AppTaller
             this.bunifuFlatButton2.IconVisible = true;
             this.bunifuFlatButton2.IconZoom = 45D;
             this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(526, 12);
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(524, 12);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(197)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(190)))), ((int)(((byte)(0)))));
@@ -108,8 +111,10 @@ namespace AppTaller
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 102);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(733, 256);
@@ -136,7 +141,7 @@ namespace AppTaller
             this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 45D;
             this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(278, 316);
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(278, 364);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(197)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(197)))), ((int)(((byte)(0)))));
@@ -161,7 +166,7 @@ namespace AppTaller
             // 
             // txttotal
             // 
-            this.txttotal.Location = new System.Drawing.Point(680, 364);
+            this.txttotal.Location = new System.Drawing.Point(680, 412);
             this.txttotal.Name = "txttotal";
             this.txttotal.ReadOnly = true;
             this.txttotal.Size = new System.Drawing.Size(65, 20);
@@ -172,7 +177,7 @@ namespace AppTaller
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(583, 369);
+            this.label6.Location = new System.Drawing.Point(583, 417);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 41;
@@ -180,7 +185,7 @@ namespace AppTaller
             // 
             // txtadelantado
             // 
-            this.txtadelantado.Location = new System.Drawing.Point(680, 316);
+            this.txtadelantado.Location = new System.Drawing.Point(680, 364);
             this.txtadelantado.Name = "txtadelantado";
             this.txtadelantado.ReadOnly = true;
             this.txtadelantado.Size = new System.Drawing.Size(65, 20);
@@ -191,7 +196,7 @@ namespace AppTaller
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(583, 323);
+            this.label4.Location = new System.Drawing.Point(583, 371);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 13);
             this.label4.TabIndex = 39;
@@ -199,7 +204,7 @@ namespace AppTaller
             // 
             // txtcobrar
             // 
-            this.txtcobrar.Location = new System.Drawing.Point(680, 341);
+            this.txtcobrar.Location = new System.Drawing.Point(680, 389);
             this.txtcobrar.Name = "txtcobrar";
             this.txtcobrar.ReadOnly = true;
             this.txtcobrar.Size = new System.Drawing.Size(65, 20);
@@ -210,18 +215,49 @@ namespace AppTaller
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(583, 344);
+            this.label3.Location = new System.Drawing.Point(583, 392);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 43;
             this.label3.Text = "Cuenta por cobrar:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(59, 58);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 13);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "Nombres del cliente:";
+            // 
+            // txtnombre
+            // 
+            this.txtnombre.Location = new System.Drawing.Point(168, 51);
+            this.txtnombre.Name = "txtnombre";
+            this.txtnombre.Size = new System.Drawing.Size(243, 20);
+            this.txtnombre.TabIndex = 46;
+            this.txtnombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtnombre_KeyDown);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(417, 49);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(52, 23);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(757, 388);
+            this.ClientSize = new System.Drawing.Size(757, 445);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtnombre);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtcobrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txttotal);
@@ -261,5 +297,8 @@ namespace AppTaller
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtcobrar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtnombre;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -37,6 +37,18 @@ namespace AppTaller
             da.Fill(dt);
             this.dataGridView1.DataSource = dt;
         }
+        private void filtrarNombresCliente()
+        {
+            MySqlCommand cmd = new MySqlCommand("BuscarOrdenClienteNombre", cn.ObtenerConeccion());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@nombres", MySqlDbType.VarChar).Value = txtnombre.Text;
+           
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            this.dataGridView1.DataSource = dt;
+        }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
@@ -116,6 +128,19 @@ namespace AppTaller
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            filtrarNombresCliente();
+        }
+
+        private void txtnombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                filtrarNombresCliente();
             }
         }
     }

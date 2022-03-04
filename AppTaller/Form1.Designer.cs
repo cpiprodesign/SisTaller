@@ -35,6 +35,7 @@ namespace AppTaller
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.bunifuFlatButton8 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -118,7 +119,6 @@ namespace AppTaller
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.bunifuFlatButton8 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuGradientPanel1.SuspendLayout();
             this.bunifuCards2.SuspendLayout();
             this.bunifuCards1.SuspendLayout();
@@ -184,6 +184,41 @@ namespace AppTaller
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1200, 700);
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
+            // 
+            // bunifuFlatButton8
+            // 
+            this.bunifuFlatButton8.Activecolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton8.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton8.BorderRadius = 6;
+            this.bunifuFlatButton8.ButtonText = "Configuracion de Empresa.";
+            this.bunifuFlatButton8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton8.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton8.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton8.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton8.Iconimage")));
+            this.bunifuFlatButton8.Iconimage_right = null;
+            this.bunifuFlatButton8.Iconimage_right_Selected = null;
+            this.bunifuFlatButton8.Iconimage_Selected = null;
+            this.bunifuFlatButton8.IconMarginLeft = 5;
+            this.bunifuFlatButton8.IconMarginRight = 0;
+            this.bunifuFlatButton8.IconRightVisible = true;
+            this.bunifuFlatButton8.IconRightZoom = 0D;
+            this.bunifuFlatButton8.IconVisible = true;
+            this.bunifuFlatButton8.IconZoom = 90D;
+            this.bunifuFlatButton8.IsTab = false;
+            this.bunifuFlatButton8.Location = new System.Drawing.Point(1086, 12);
+            this.bunifuFlatButton8.Name = "bunifuFlatButton8";
+            this.bunifuFlatButton8.Normalcolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton8.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuFlatButton8.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton8.selected = false;
+            this.bunifuFlatButton8.Size = new System.Drawing.Size(150, 54);
+            this.bunifuFlatButton8.TabIndex = 45;
+            this.bunifuFlatButton8.Text = "Configuracion de Empresa.";
+            this.bunifuFlatButton8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton8.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton8.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton8.Click += new System.EventHandler(this.bunifuFlatButton8_Click);
             // 
             // bunifuCards2
             // 
@@ -1529,41 +1564,6 @@ namespace AppTaller
             // 
             this.timer2.Enabled = true;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // bunifuFlatButton8
-            // 
-            this.bunifuFlatButton8.Activecolor = System.Drawing.Color.CornflowerBlue;
-            this.bunifuFlatButton8.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.bunifuFlatButton8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton8.BorderRadius = 6;
-            this.bunifuFlatButton8.ButtonText = "Configuracion de Empresa.";
-            this.bunifuFlatButton8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton8.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton8.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton8.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton8.Iconimage")));
-            this.bunifuFlatButton8.Iconimage_right = null;
-            this.bunifuFlatButton8.Iconimage_right_Selected = null;
-            this.bunifuFlatButton8.Iconimage_Selected = null;
-            this.bunifuFlatButton8.IconMarginLeft = 5;
-            this.bunifuFlatButton8.IconMarginRight = 0;
-            this.bunifuFlatButton8.IconRightVisible = true;
-            this.bunifuFlatButton8.IconRightZoom = 0D;
-            this.bunifuFlatButton8.IconVisible = true;
-            this.bunifuFlatButton8.IconZoom = 90D;
-            this.bunifuFlatButton8.IsTab = false;
-            this.bunifuFlatButton8.Location = new System.Drawing.Point(1086, 12);
-            this.bunifuFlatButton8.Name = "bunifuFlatButton8";
-            this.bunifuFlatButton8.Normalcolor = System.Drawing.Color.CornflowerBlue;
-            this.bunifuFlatButton8.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
-            this.bunifuFlatButton8.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton8.selected = false;
-            this.bunifuFlatButton8.Size = new System.Drawing.Size(150, 54);
-            this.bunifuFlatButton8.TabIndex = 45;
-            this.bunifuFlatButton8.Text = "Configuracion de Empresa.";
-            this.bunifuFlatButton8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton8.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton8.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton8.Click += new System.EventHandler(this.bunifuFlatButton8_Click);
             // 
             // Form1
             // 
