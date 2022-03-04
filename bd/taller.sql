@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Versión del servidor:         5.7.24 - MySQL Community Server (GPL)
+-- Host:                         127.0.0.1
+-- Versión del servidor:         5.7.33 - MySQL Community Server (GPL)
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             9.5.0.5332
+-- HeidiSQL Versión:             11.2.0.6213
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -10,6 +10,7 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- Volcando estructura de base de datos para tallercell
@@ -18,18 +19,35 @@ USE `tallercell`;
 
 -- Volcando estructura para procedimiento tallercell.Buscarfechas
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Buscarfechas`(
-
-IN fechaInicial DATETIME,
-IN fechaFinal DATETIME
+CREATE PROCEDURE `Buscarfechas`(
+	IN `fechaInicial` DATETIME,
+	IN `fechaFinal` DATETIME
 )
 BEGIN
   SELECT idOrden,clientes.Nombres,Nombre,Marca,Modelo,SERIAL,Clave,Accesorios,Observaciones,FallaEquipo,Reparacion,FechaEntrada,FechaEntrega,
  tecnicos.Nombres AS Tecnico,PagoAdelantado,TotalPagar,orden.Estado
    FROM orden 
-   inner JOIN Clientes ON Clientes.id = orden.idCliente
+   inner JOIN clientes ON clientes.id = orden.idcliente
    inner JOIN tecnicos ON tecnicos.idTecnicos = orden.Idempleado
 		WHERE FechaEntrada BETWEEN fechaInicial AND fechaFinal
+		ORDER BY idOrden desc;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento tallercell.BuscarOrdenClienteNombre
+DELIMITER //
+CREATE PROCEDURE `BuscarOrdenClienteNombre`(
+
+IN nombres VARCHAR(250)
+
+)
+BEGIN
+  SELECT idOrden,clientes.Nombres AS 'Cliente',Nombre,Marca,Modelo,SERIAL,Clave,Accesorios,Observaciones,FallaEquipo,Reparacion,FechaEntrada,FechaEntrega,
+ tecnicos.Nombres AS Tecnico,PagoAdelantado,TotalPagar,orden.Estado
+   FROM orden 
+   inner JOIN clientes ON clientes.id = orden.idCliente
+   inner JOIN tecnicos ON tecnicos.idTecnicos = orden.Idempleado
+			WHERE clientes.Nombres LIKE CONCAT('%', nombres, '%')
 		ORDER BY idOrden desc;
 END//
 DELIMITER ;
@@ -43,20 +61,53 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `Email` varchar(50) NOT NULL,
   `Dni` char(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla tallercell.clientes: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla tallercell.clientes: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
 REPLACE INTO `clientes` (`id`, `Nombres`, `Direccion`, `Telefono`, `Email`, `Dni`) VALUES
 	(1, 'Cristian izquierdo', 'lima', '1234566', 'demo@gmail.com', '12345678'),
 	(5, 'Thiago silva', 'olivos', '1234563', 'demso@gmail.com', '12345674'),
 	(30, 'Yamila sanchez', 'lima olicos', '1232', 'demo@gmail.com', '1233'),
-	(31, 'usuariodemo', 'lima los olivos', '123456', 'demo@demo.pe', '123456');
+	(31, 'usuariodemo', 'lima los olivos', '123456', 'demo@demo.pe', '123456'),
+	(32, 'sdsq', 'fgasf', '334', '', '');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+
+-- Volcando estructura para tabla tallercell.configuracion
+CREATE TABLE IF NOT EXISTS `configuracion` (
+  `id` int(11) NOT NULL,
+  `Ip` varchar(200) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla tallercell.configuracion: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `configuracion` DISABLE KEYS */;
+REPLACE INTO `configuracion` (`id`, `Ip`) VALUES
+	(1, '"server=localhost;Database=tallercell;Uid=root;Pwd=;"');
+/*!40000 ALTER TABLE `configuracion` ENABLE KEYS */;
+
+-- Volcando estructura para tabla tallercell.empresa
+CREATE TABLE IF NOT EXISTS `empresa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `numero` char(50) NOT NULL DEFAULT '',
+  `NombreComercial` varchar(100) NOT NULL DEFAULT '',
+  `logo` varchar(100) NOT NULL DEFAULT '',
+  `telefono` int(11) NOT NULL DEFAULT '0',
+  `email` varchar(100) NOT NULL DEFAULT '0',
+  `direccion` varchar(100) NOT NULL DEFAULT '0',
+  `estado` char(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla tallercell.empresa: ~2 rows (aproximadamente)
+/*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
+REPLACE INTO `empresa` (`id`, `numero`, `NombreComercial`, `logo`, `telefono`, `email`, `direccion`, `estado`) VALUES
+	(1, '0962883773-001', 'Compuservices-Manabin', '', 994138371, 'Compuservicesmanta2018@gmail.com', 'Manta av13 entré calle 13 y 15.', '1');
+/*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
 
 -- Volcando estructura para procedimiento tallercell.generar
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `generar`()
+CREATE PROCEDURE `generar`()
 BEGIN
 SELECT MAX(idOrden)+1 as numero FROM orden ;
 
@@ -65,7 +116,7 @@ DELIMITER ;
 
 -- Volcando estructura para procedimiento tallercell.InsertarOrden
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarOrden`(
+CREATE PROCEDURE `InsertarOrden`(
 IN idCliente INT(11),
 IN Nombre VARCHAR(100),
 IN Marca VARCHAR(45),
@@ -94,7 +145,7 @@ DELIMITER ;
 
 -- Volcando estructura para procedimiento tallercell.listarCliente
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarCliente`(
+CREATE PROCEDURE `listarCliente`(
     IN idcliente INT(2))
 BEGIN
   SELECT * FROM clientes WHERE id=idcliente;
@@ -103,7 +154,7 @@ DELIMITER ;
 
 -- Volcando estructura para procedimiento tallercell.listarOrden
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `listarOrden`(IN idordenes INT(11))
+CREATE PROCEDURE `listarOrden`(IN idordenes INT(11))
 BEGIN
   SELECT idOrden,clientes.Nombres,Nombre,Marca,Modelo,SERIAL,Clave,Accesorios,Observaciones,FallaEquipo,Reparacion,FechaEntrada,FechaEntrega,
   PagoAdelantado,TotalPagar,orden.Estado,tecnicos.Nombres
@@ -111,6 +162,16 @@ BEGIN
    inner JOIN Clientes ON Clientes.id = orden.idCliente
    inner JOIN tecnicos ON tecnicos.idTecnicos = orden.Idempleado
 		WHERE idOrden=idordenes;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento tallercell.obtenerOrdenPorEstado
+DELIMITER //
+CREATE PROCEDURE `obtenerOrdenPorEstado`(IN nombre_estado VARCHAR(255))
+BEGIN
+    SELECT * 
+    FROM orden
+    WHERE estado = nombre_estado;
 END//
 DELIMITER ;
 
@@ -139,21 +200,17 @@ CREATE TABLE IF NOT EXISTS `orden` (
   KEY `idOrden` (`idOrden`),
   CONSTRAINT `FKclientes` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `key_idtecnico` FOREIGN KEY (`Idempleado`) REFERENCES `tecnicos` (`idTecnicos`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla tallercell.orden: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla tallercell.orden: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `orden` DISABLE KEYS */;
 REPLACE INTO `orden` (`idOrden`, `idCliente`, `Nombre`, `Marca`, `Modelo`, `Serial`, `Clave`, `Accesorios`, `Observaciones`, `FallaEquipo`, `Reparacion`, `FechaEntrada`, `FechaEntrega`, `PagoAdelantado`, `TotalPagar`, `Estado`, `Idempleado`) VALUES
-	(18, 5, 'celular', 'xiomi', 'M9', '1234', '123', 'no prende', 'no prende', 'Diagnostico', 'cambio de bateria', '2021-04-01 00:00:00', '2021-04-04 00:00:00', 60.00, 60.00, 'Entregado', 1),
-	(19, 1, 'Celular', 'huawei', 'y2', '234', '123', 'no tine', 'no tine', 'no enciende', 'pantalla y bateria', '2021-04-01 00:00:00', '2021-04-04 00:00:00', 30.00, 30.00, 'Entregado', 2),
-	(20, 5, 'Lapno ', 'samsun', 'sd', '123', '222', 'no enciende', 'no enciende', 'no carga', 'bateria o placa', '2021-04-01 00:00:00', '2021-04-30 00:00:00', 100.00, 100.00, 'Entregado', 2),
-	(21, 30, 'celular', 'zt', '34', '23333', '22333', 'no carga', 'no carga', 'bateria', 'cambio de bateria', '2021-04-01 00:00:00', '2021-04-01 00:00:00', 100.00, 100.00, 'Entregado', 2),
-	(22, 31, 'Laptop', 'Samsun', 'm23', '1234', '123', 'no prende', 'no prende', 'no enciende', 'diagnostico y reparacion', '2021-04-02 00:00:00', '2021-04-04 00:00:00', 100.00, 100.00, 'Entregado', 2);
+	(84, 1, 'sdfsd', 'xiomi', 'mi10', '111', '1234', 'estuche', 'obs', 'sdsa', 'asda', '2022-03-01 00:00:00', '2022-03-25 00:00:00', 10.00, 10.00, 'Entregado', 3);
 /*!40000 ALTER TABLE `orden` ENABLE KEYS */;
 
 -- Volcando estructura para procedimiento tallercell.ProcedimientoInsertarClientes
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ProcedimientoInsertarClientes`(
+CREATE PROCEDURE `ProcedimientoInsertarClientes`(
 IN id INT(11),
 IN Nombres VARCHAR(450),
 IN Direccion VARCHAR(450),
@@ -178,19 +235,20 @@ CREATE TABLE IF NOT EXISTS `tecnicos` (
   `Estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idTecnicos`),
   UNIQUE KEY `idTecnicos_UNIQUE` (`idTecnicos`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla tallercell.tecnicos: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla tallercell.tecnicos: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `tecnicos` DISABLE KEYS */;
 REPLACE INTO `tecnicos` (`idTecnicos`, `Nombres`, `Direccion`, `Telefono`, `Email`, `Documento`, `Sueldo`, `Estado`) VALUES
 	(1, 'DEV', 'LIMA LOS OLIVOS', 1234567, NULL, '45800089', '12300', 'Activo'),
 	(2, 'Rafael Santos', 'LIMA LOS OLIVOS', 1234567, NULL, '45800089', '12300', 'Activo'),
-	(3, 'Luis sanchez', 'lmaa', 1124, 'demo@demo.com', '1223', '100', 'Activo');
+	(3, 'Luis sanchez', 'lmaa', 1124, 'demo@demo.com', '1223', '100', 'Activo'),
+	(4, 'ari', 'dem', 12345678, 'demo@hotmail.com', '12345', '1234', 'Activo');
 /*!40000 ALTER TABLE `tecnicos` ENABLE KEYS */;
 
 -- Volcando estructura para procedimiento tallercell.UpdateOrden
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateOrden`(
+CREATE PROCEDURE `UpdateOrden`(
 IN idOrdenes INT(11),
 IN idCliente INT(11),
 IN Nombre VARCHAR(100),
@@ -217,5 +275,6 @@ END//
 DELIMITER ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
