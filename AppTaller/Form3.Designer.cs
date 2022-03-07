@@ -47,6 +47,9 @@ namespace AppTaller
             this.label1 = new System.Windows.Forms.Label();
             this.txtsueldo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btncancelar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btneditar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btneliminar = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +74,7 @@ namespace AppTaller
             this.btnguardar.IconVisible = true;
             this.btnguardar.IconZoom = 50D;
             this.btnguardar.IsTab = false;
-            this.btnguardar.Location = new System.Drawing.Point(340, 110);
+            this.btnguardar.Location = new System.Drawing.Point(529, 143);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnguardar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(0)))));
@@ -106,7 +109,7 @@ namespace AppTaller
             this.btnnuevo.IconVisible = true;
             this.btnnuevo.IconZoom = 50D;
             this.btnnuevo.IsTab = false;
-            this.btnnuevo.Location = new System.Drawing.Point(340, 63);
+            this.btnnuevo.Location = new System.Drawing.Point(222, 143);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnnuevo.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(0)))));
@@ -122,13 +125,15 @@ namespace AppTaller
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 189);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(498, 261);
+            this.dataGridView1.Size = new System.Drawing.Size(751, 261);
             this.dataGridView1.TabIndex = 46;
+            this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             // 
             // txtdni
             // 
@@ -243,12 +248,120 @@ namespace AppTaller
             this.label7.TabIndex = 49;
             this.label7.Text = "Sueldo:";
             // 
+            // btncancelar
+            // 
+            this.btncancelar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btncancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btncancelar.BorderRadius = 3;
+            this.btncancelar.ButtonText = "Cancelar";
+            this.btncancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btncancelar.DisabledColor = System.Drawing.Color.Cyan;
+            this.btncancelar.Iconcolor = System.Drawing.Color.Transparent;
+            this.btncancelar.Iconimage = ((System.Drawing.Image)(resources.GetObject("btncancelar.Iconimage")));
+            this.btncancelar.Iconimage_right = null;
+            this.btncancelar.Iconimage_right_Selected = null;
+            this.btncancelar.Iconimage_Selected = null;
+            this.btncancelar.IconMarginLeft = 2;
+            this.btncancelar.IconMarginRight = 0;
+            this.btncancelar.IconRightVisible = true;
+            this.btncancelar.IconRightZoom = 0D;
+            this.btncancelar.IconVisible = true;
+            this.btncancelar.IconZoom = 50D;
+            this.btncancelar.IsTab = false;
+            this.btncancelar.Location = new System.Drawing.Point(332, 143);
+            this.btncancelar.Name = "btncancelar";
+            this.btncancelar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btncancelar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(0)))));
+            this.btncancelar.OnHoverTextColor = System.Drawing.Color.White;
+            this.btncancelar.selected = false;
+            this.btncancelar.Size = new System.Drawing.Size(95, 37);
+            this.btncancelar.TabIndex = 51;
+            this.btncancelar.Text = "Cancelar";
+            this.btncancelar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btncancelar.Textcolor = System.Drawing.Color.White;
+            this.btncancelar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // btneditar
+            // 
+            this.btneditar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btneditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btneditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneditar.BorderRadius = 3;
+            this.btneditar.ButtonText = "Editar";
+            this.btneditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneditar.DisabledColor = System.Drawing.Color.Cyan;
+            this.btneditar.Iconcolor = System.Drawing.Color.Transparent;
+            this.btneditar.Iconimage = ((System.Drawing.Image)(resources.GetObject("btneditar.Iconimage")));
+            this.btneditar.Iconimage_right = null;
+            this.btneditar.Iconimage_right_Selected = null;
+            this.btneditar.Iconimage_Selected = null;
+            this.btneditar.IconMarginLeft = 0;
+            this.btneditar.IconMarginRight = 0;
+            this.btneditar.IconRightVisible = true;
+            this.btneditar.IconRightZoom = 0D;
+            this.btneditar.IconVisible = true;
+            this.btneditar.IconZoom = 50D;
+            this.btneditar.IsTab = false;
+            this.btneditar.Location = new System.Drawing.Point(430, 143);
+            this.btneditar.Name = "btneditar";
+            this.btneditar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btneditar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(0)))));
+            this.btneditar.OnHoverTextColor = System.Drawing.Color.White;
+            this.btneditar.selected = false;
+            this.btneditar.Size = new System.Drawing.Size(95, 37);
+            this.btneditar.TabIndex = 50;
+            this.btneditar.Text = "Editar";
+            this.btneditar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btneditar.Textcolor = System.Drawing.Color.White;
+            this.btneditar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btneliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btneliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneliminar.BorderRadius = 3;
+            this.btneliminar.ButtonText = "Eliminar";
+            this.btneliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneliminar.DisabledColor = System.Drawing.Color.Cyan;
+            this.btneliminar.Iconcolor = System.Drawing.Color.Transparent;
+            this.btneliminar.Iconimage = ((System.Drawing.Image)(resources.GetObject("btneliminar.Iconimage")));
+            this.btneliminar.Iconimage_right = null;
+            this.btneliminar.Iconimage_right_Selected = null;
+            this.btneliminar.Iconimage_Selected = null;
+            this.btneliminar.IconMarginLeft = 0;
+            this.btneliminar.IconMarginRight = 0;
+            this.btneliminar.IconRightVisible = true;
+            this.btneliminar.IconRightZoom = 0D;
+            this.btneliminar.IconVisible = true;
+            this.btneliminar.IconZoom = 50D;
+            this.btneliminar.IsTab = false;
+            this.btneliminar.Location = new System.Drawing.Point(639, 143);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btneliminar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(250)))), ((int)(((byte)(0)))));
+            this.btneliminar.OnHoverTextColor = System.Drawing.Color.White;
+            this.btneliminar.selected = false;
+            this.btneliminar.Size = new System.Drawing.Size(95, 37);
+            this.btneliminar.TabIndex = 52;
+            this.btneliminar.Text = "Eliminar";
+            this.btneliminar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btneliminar.Textcolor = System.Drawing.Color.White;
+            this.btneliminar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(498, 450);
+            this.ClientSize = new System.Drawing.Size(751, 450);
+            this.Controls.Add(this.btneliminar);
+            this.Controls.Add(this.btncancelar);
+            this.Controls.Add(this.btneditar);
             this.Controls.Add(this.txtsueldo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnguardar);
@@ -296,5 +409,8 @@ namespace AppTaller
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtsueldo;
         private System.Windows.Forms.Label label7;
+        private Bunifu.Framework.UI.BunifuFlatButton btncancelar;
+        private Bunifu.Framework.UI.BunifuFlatButton btneditar;
+        private Bunifu.Framework.UI.BunifuFlatButton btneliminar;
     }
 }
