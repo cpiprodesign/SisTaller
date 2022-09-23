@@ -880,6 +880,12 @@ namespace AppTaller
             fr.ShowDialog();
         }
 
+        private void bunifuFlatButton9_Click(object sender, EventArgs e)
+        {
+            Form5 fr = new Form5();
+            fr.ShowDialog();
+        }
+
         private void Lblestado_Click(object sender, EventArgs e)
         {
 
@@ -909,7 +915,11 @@ namespace AppTaller
                     nombreEmpresa = dr["NombreComercial"].ToString();
                     Numero =Convert.ToString (dr["Numero"].ToString());
                     
+<<<<<<< HEAD
                     telefono =Convert.ToString (dr["telefono"].ToString());
+=======
+                    telefono =(dr["telefono"].ToString());
+>>>>>>> dev
                     email = dr["email"].ToString();
                 }
 
