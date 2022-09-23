@@ -22,7 +22,7 @@ namespace AppTaller
         conexion cn = new conexion();//
         //datos de la empresa
         string nombreEmpresa, direccion,email,Numero;
-        int telefono;
+        string telefono;
         
 
         public Form1()
@@ -880,6 +880,12 @@ namespace AppTaller
             fr.ShowDialog();
         }
 
+        private void bunifuFlatButton9_Click(object sender, EventArgs e)
+        {
+            Form5 fr = new Form5();
+            fr.ShowDialog();
+        }
+
         private void Lblestado_Click(object sender, EventArgs e)
         {
 
@@ -909,7 +915,7 @@ namespace AppTaller
                     nombreEmpresa = dr["NombreComercial"].ToString();
                     Numero =Convert.ToString (dr["Numero"].ToString());
                     
-                    telefono =Convert.ToInt32 (dr["telefono"].ToString());
+                    telefono =(dr["telefono"].ToString());
                     email = dr["email"].ToString();
                 }
 
