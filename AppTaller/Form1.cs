@@ -22,7 +22,7 @@ namespace AppTaller
         conexion cn = new conexion();//
         //datos de la empresa
         string nombreEmpresa, direccion,email,Numero;
-        int telefono;
+        string telefono;
         
 
         public Form1()
@@ -909,7 +909,7 @@ namespace AppTaller
                     nombreEmpresa = dr["NombreComercial"].ToString();
                     Numero =Convert.ToString (dr["Numero"].ToString());
                     
-                    telefono =Convert.ToInt32 (dr["telefono"].ToString());
+                    telefono =Convert.ToString (dr["telefono"].ToString());
                     email = dr["email"].ToString();
                 }
 
