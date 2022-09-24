@@ -23,11 +23,13 @@ namespace AppTaller
         private void Form5_Load(object sender, EventArgs e)
         {
             listar();
-            
+            GetCategoria();
+            GetMarca();
             desabilitar();
             btnguardar.Enabled = false;
             bunifuFlatButton2.Enabled = false;
         }
+
         private void listar()
         {
             MySqlDataAdapter da = new MySqlDataAdapter("ListarArticulos", cn.ObtenerConeccion());
@@ -52,12 +54,16 @@ namespace AppTaller
         {
             txtid.Text = "";
             txtcodigobarras.Text = "";
+            txtcodigobarras.Focus();
             txtdescripcion.Text = "";
             txtcosto.Text = "";
             txtventa.Text = "";
             txtpreciomayor.Text = "";
             txtstock.Text = "";
-            txtcodigobarras.Focus();
+            txtstockminimo.Text = "";
+            cbocategoria.Text = "";
+            cbomarca.Text = "";
+            
         }
         private void desabilitar()
         {
@@ -146,7 +152,7 @@ namespace AppTaller
                         libros_trabajo.SaveAs(fichero.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                         libros_trabajo.Close(true);
                         aplicacion.Quit();
-                        MessageBox.Show("Datos exportados correctamente");
+                        MessageBox.Show("Datos exportados correctamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -220,9 +226,211 @@ namespace AppTaller
         {
             filtro();
         }
-    }
-       
+
+        private void GetCategoria()
+        {
+            try
+            {
+                MySqlConnection conexion = new MySqlConnection();
+                MySqlCommand cmd = new MySqlCommand("select*from categoria", cn.ObtenerConeccion());
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cbocategoria.DataSource = dt;
+                cbocategoria.DisplayMember = "Nombres";
+                cbocategoria.ValueMember = "idCategoria";
+                label12.DataBindings.Add(new Binding("Text", dt, "idCategoria"));
+                //txtemail.DataBindings.Add(new Binding("Text", dt, "Email"));
+                //txttelefono.DataBindings.Add(new Binding("Text", dt, "Telefono"));
+                //txtdocumento.DataBindings.Add(new Binding("Text", dt, "Dni"));
 
 
-    }
+                //autocompletado
+                AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+                foreach (DataRow row in dt.Rows)
+                {
+                    coleccion.Add(Convert.ToString(row["Nombres"])); // columna de la consulta sql
+                }
+                cbocategoria.AutoCompleteCustomSource = coleccion;
+                cbocategoria.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                cbocategoria.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+
+            }
+        }
+        private void GetMarca()
+        {
+            try
+            {
+                MySqlConnection conexion = new MySqlConnection();
+                MySqlCommand cmd = new MySqlCommand("select*from marca", cn.ObtenerConeccion());
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+               cbomarca.DataSource = dt;
+                cbomarca.DisplayMember = "Nombre";
+                cbomarca.ValueMember = "Id";
+                label13.DataBindings.Add(new Binding("Text", dt, "Id"));
+                //txtemail.DataBindings.Add(new Binding("Text", dt, "Email"));
+                //txttelefono.DataBindings.Add(new Binding("Text", dt, "Telefono"));
+                //txtdocumento.DataBindings.Add(new Binding("Text", dt, "Dni"));
+
+
+                //autocompletado
+                AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+                foreach (DataRow row in dt.Rows)
+                {
+                    coleccion.Add(Convert.ToString(row["Nombre"])); // columna de la consulta sql
+                }
+                cbomarca.AutoCompleteCustomSource = coleccion;
+                cbocategoria.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                cbocategoria.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+
+            }
+        }
+
+        private void btnguardar_Click(object sender, EventArgs e)
+        {
+            if (p == 1)
+            {
+                add();
+            }
+            else
+            {
+                updates();
+            }
+        }
+        private void add()
+        {
+
+            try
+            {
+                if (cbocategoria.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar la categoria","Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    cbocategoria.Focus();
+
+                }
+                else if  (cbomarca.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar la marca", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    cbomarca.Focus();
+                }
+
+                else
+                {
+                    String query = "insert into articulos(CodigoBarra,Descripcion,PrecioCosto,PrecioVenta,PrecioMayor,Stock,StockMinimo,IdCategoria,IdMarca)values('" + this.txtcodigobarras.Text + "','" + this.txtdescripcion.Text + "','" + this.txtcosto.Text + "','" + this.txtventa.Text + "','" + (this.txtpreciomayor.Text) + "','" + (this.txtstock.Text) + "','" + (this.txtstockminimo.Text) + "','" + (this.label12.Text) + "','" + (this.label13.Text) + "')";
+                    MySqlCommand cm = new MySqlCommand(query, cn.ObtenerConeccion());
+                    cn.ObtenerConeccion();
+                    MySqlDataReader dr = cm.ExecuteReader();
+                    MessageBox.Show("Datos Guardados Corectamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cn.DescargarConexion();
+                    listar();
+                    limpiar();
+                    bunifuFlatButton1.Enabled = true;
+                    btnguardar.Enabled = false;
+                    bunifuFlatButton2.Enabled = false;
+                    btneliminar.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+
+                cn.DescargarConexion();
+            }
+        }
+        private void updates()
+        {
+
+            string update = "update articulos set CodigoBarra='" + this.txtcodigobarras.Text + "',Descripcion='" + this.txtdescripcion.Text + "',PrecioCosto='" + this.txtcosto.Text + "',PrecioVenta='" + this.txtventa.Text + "',PrecioMayor='" + this.txtpreciomayor.Text + "',Stock='" + this.txtstock.Text + "',StockMinimo='" + this.txtstockminimo.Text + "',IdCategoria='" + this.label12.Text + "',IdMarca='" + this.label13.Text + "' where Id='" + this.txtid.Text + "'";
+            MySqlCommand cm = new MySqlCommand(update, cn.ObtenerConeccion());
+            MySqlDataReader dr;
+            try
+            {
+                dr = cm.ExecuteReader();
+                MessageBox.Show("Datos Actualizados Corectamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                listar();
+                btnguardar.Text = "Guardar";
+                btnguardar.Enabled = false;
+                bunifuFlatButton1.Enabled = true;
+                bunifuFlatButton2.Enabled = false;
+                btneliminar.Enabled = true;
+                //habilitar botones
+                //desabilitar();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cn.DescargarConexion();
+            }
+        }
+        private void delete()
+        {
+            DialogResult result = MessageBox.Show("Estas Seguro que quieres eleminar el Registro " + this.txtdescripcion.Text, "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    string b = "delete from articulos where id='" + this.txtid.Text + "'";
+                    MySqlCommand cmd = new MySqlCommand(b, cn.ObtenerConeccion());
+                    cmd.ExecuteNonQuery();
+                    listar();
+                    MessageBox.Show("Datos Eleminado Correctamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiar();
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                finally
+                {
+                    cn.DescargarConexion();
+                }
+            }
+        }
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            p = 2;
+            habilitar();
+            btnguardar.Text = "Actualizar";
+            btnguardar.Enabled = true;
+            bunifuFlatButton2.Enabled = true;
+            bunifuFlatButton1.Enabled = false;
+            btneliminar.Enabled = false;
+        }
+
+        private void btneliminar_Click(object sender, EventArgs e)
+        {
+            delete();
+        }
+    }    
+}
 
