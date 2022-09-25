@@ -232,7 +232,7 @@ namespace AppTaller
             try
             {
                 MySqlConnection conexion = new MySqlConnection();
-                MySqlCommand cmd = new MySqlCommand("select*from categoria", cn.ObtenerConeccion());
+                MySqlCommand cmd = new MySqlCommand("select*from categoria order by IdCategoria desc", cn.ObtenerConeccion());
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -271,7 +271,7 @@ namespace AppTaller
             try
             {
                 MySqlConnection conexion = new MySqlConnection();
-                MySqlCommand cmd = new MySqlCommand("select*from marca", cn.ObtenerConeccion());
+                MySqlCommand cmd = new MySqlCommand("select*from marca order by id desc", cn.ObtenerConeccion());
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -430,6 +430,38 @@ namespace AppTaller
         private void btneliminar_Click(object sender, EventArgs e)
         {
             delete();
+        }
+
+        private void btncategoria_Click(object sender, EventArgs e)
+        {
+            FrmCategoriacs f = new FrmCategoriacs(this);
+            f.ShowDialog();
+        }
+        public void actualizarCategoria()
+        {
+            cbocategoria.DataSource = null;
+            cbocategoria.DataBindings.Clear();
+            label12.DataBindings.Clear();
+           
+
+            GetCategoria();
+
+        }
+        public void actualizarMarca()
+        {
+            cbomarca.DataSource = null;
+            cbomarca.DataBindings.Clear();
+            label13.DataBindings.Clear();
+
+
+            GetMarca();
+
+        }
+
+        private void btnmarca_Click(object sender, EventArgs e)
+        {
+            FrmMarca f = new FrmMarca(this);
+            f.ShowDialog();
         }
     }    
 }
