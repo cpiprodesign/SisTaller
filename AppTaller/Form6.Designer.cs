@@ -37,26 +37,29 @@ namespace AppTaller
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbtotal = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtigv = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtsubtotal = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cboclientes = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtdni = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbodocumento = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbotipopago = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -91,6 +94,7 @@ namespace AppTaller
             this.listView1.TabIndex = 201;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView1_KeyDown);
             // 
             // columnHeader1
             // 
@@ -118,14 +122,34 @@ namespace AppTaller
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.txtcodigo);
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(530, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(287, 100);
             this.groupBox1.TabIndex = 202;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtcodigo
+            // 
+            this.txtcodigo.Location = new System.Drawing.Point(65, 54);
+            this.txtcodigo.Name = "txtcodigo";
+            this.txtcodigo.Size = new System.Drawing.Size(204, 20);
+            this.txtcodigo.TabIndex = 3;
+            this.txtcodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcodigo_KeyDown_1);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(7, 57);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(51, 17);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Todo";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label1
             // 
@@ -138,24 +162,6 @@ namespace AppTaller
             this.label1.TabIndex = 0;
             this.label1.Text = "Escanee o ingrese el codigo del  articulo";
             // 
-            // txtcodigo
-            // 
-            this.txtcodigo.Location = new System.Drawing.Point(63, 48);
-            this.txtcodigo.Multiline = true;
-            this.txtcodigo.Name = "txtcodigo";
-            this.txtcodigo.Size = new System.Drawing.Size(205, 27);
-            this.txtcodigo.TabIndex = 1;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(7, 57);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(51, 17);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Todo";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -166,13 +172,14 @@ namespace AppTaller
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(287, 283);
             this.dataGridView1.TabIndex = 203;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.bunifuGradientPanel1);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtigv);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtsubtotal);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(332, 214);
             this.groupBox2.Name = "groupBox2";
@@ -180,37 +187,33 @@ namespace AppTaller
             this.groupBox2.TabIndex = 204;
             this.groupBox2.TabStop = false;
             // 
-            // label2
+            // bunifuGradientPanel1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Sub Total: s/";
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lbtotal);
+            this.bunifuGradientPanel1.Controls.Add(this.label4);
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(10, 114);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(173, 42);
+            this.bunifuGradientPanel1.TabIndex = 5;
             // 
-            // textBox2
+            // lbtotal
             // 
-            this.textBox2.Location = new System.Drawing.Point(83, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(83, 62);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "IGV: s/";
+            this.lbtotal.AutoSize = true;
+            this.lbtotal.BackColor = System.Drawing.Color.Transparent;
+            this.lbtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbtotal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbtotal.Location = new System.Drawing.Point(85, 10);
+            this.lbtotal.Name = "lbtotal";
+            this.lbtotal.Size = new System.Drawing.Size(64, 20);
+            this.lbtotal.TabIndex = 5;
+            this.lbtotal.Text = "100.00";
             // 
             // label4
             // 
@@ -224,43 +227,50 @@ namespace AppTaller
             this.label4.TabIndex = 4;
             this.label4.Text = "Total: s/";
             // 
-            // bunifuGradientPanel1
+            // txtigv
             // 
-            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
-            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel1.Controls.Add(this.label5);
-            this.bunifuGradientPanel1.Controls.Add(this.label4);
-            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(10, 114);
-            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
-            this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(173, 42);
-            this.bunifuGradientPanel1.TabIndex = 5;
+            this.txtigv.Location = new System.Drawing.Point(83, 62);
+            this.txtigv.Name = "txtigv";
+            this.txtigv.Size = new System.Drawing.Size(100, 20);
+            this.txtigv.TabIndex = 3;
             // 
-            // label5
+            // label3
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(85, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "100.00";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "IGV: s/";
+            // 
+            // txtsubtotal
+            // 
+            this.txtsubtotal.Location = new System.Drawing.Point(83, 30);
+            this.txtsubtotal.Name = "txtsubtotal";
+            this.txtsubtotal.Size = new System.Drawing.Size(100, 20);
+            this.txtsubtotal.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Sub Total: s/";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.cboclientes);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.txtdni);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.cbodocumento);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.cbotipopago);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Location = new System.Drawing.Point(8, 281);
             this.groupBox3.Name = "groupBox3";
@@ -268,12 +278,47 @@ namespace AppTaller
             this.groupBox3.TabIndex = 208;
             this.groupBox3.TabStop = false;
             // 
-            // textBox5
+            // label12
             // 
-            this.textBox5.Location = new System.Drawing.Point(196, 79);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(82, 20);
-            this.textBox5.TabIndex = 223;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(111, 65);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.TabIndex = 226;
+            this.label12.Text = "label12";
+            // 
+            // cboclientes
+            // 
+            this.cboclientes.FormattingEnabled = true;
+            this.cboclientes.Location = new System.Drawing.Point(20, 79);
+            this.cboclientes.Name = "cboclientes";
+            this.cboclientes.Size = new System.Drawing.Size(170, 21);
+            this.cboclientes.TabIndex = 221;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(279, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 225;
+            this.label11.Text = "label11";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(111, 21);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 224;
+            this.label10.Text = "label10";
+            // 
+            // txtdni
+            // 
+            this.txtdni.Location = new System.Drawing.Point(196, 79);
+            this.txtdni.Name = "txtdni";
+            this.txtdni.Size = new System.Drawing.Size(82, 20);
+            this.txtdni.TabIndex = 223;
             // 
             // label9
             // 
@@ -284,13 +329,6 @@ namespace AppTaller
             this.label9.TabIndex = 222;
             this.label9.Text = "D.N.I / R.U.C";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(20, 79);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(170, 20);
-            this.textBox4.TabIndex = 221;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -300,13 +338,14 @@ namespace AppTaller
             this.label8.TabIndex = 220;
             this.label8.Text = "Cliente:";
             // 
-            // comboBox2
+            // cbodocumento
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(157, 37);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 219;
+            this.cbodocumento.FormattingEnabled = true;
+            this.cbodocumento.Location = new System.Drawing.Point(157, 37);
+            this.cbodocumento.Name = "cbodocumento";
+            this.cbodocumento.Size = new System.Drawing.Size(121, 21);
+            this.cbodocumento.TabIndex = 219;
+            this.cbodocumento.SelectedIndexChanged += new System.EventHandler(this.cbodocumento_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -317,13 +356,13 @@ namespace AppTaller
             this.label7.TabIndex = 218;
             this.label7.Text = "Tipo de Documento";
             // 
-            // comboBox1
+            // cbotipopago
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(20, 37);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 217;
+            this.cbotipopago.FormattingEnabled = true;
+            this.cbotipopago.Location = new System.Drawing.Point(20, 37);
+            this.cbotipopago.Name = "cbotipopago";
+            this.cbotipopago.Size = new System.Drawing.Size(121, 21);
+            this.cbotipopago.TabIndex = 217;
             // 
             // label6
             // 
@@ -368,6 +407,7 @@ namespace AppTaller
             this.button2.TabIndex = 209;
             this.button2.Text = "Agregar Cliente";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -423,29 +463,32 @@ namespace AppTaller
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtigv;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtsubtotal;
         private System.Windows.Forms.Label label2;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbtotal;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtdni;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbodocumento;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbotipopago;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cboclientes;
+        private System.Windows.Forms.TextBox txtcodigo;
     }
 }

@@ -33,7 +33,10 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form3.resources
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form4.resources
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form5.resources
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form6.resources
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.FrmCategoriacs.resources
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Frmempresa.resources
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.FrmMarca.resources
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Properties.Resources.resources
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.GenerateResource.cache
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.CoreCompileInputs.cache
@@ -41,6 +44,3 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.cspr
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.exe
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.pdb
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.AssemblyReference.cache
-C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.FrmCategoriacs.resources
-C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.FrmMarca.resources
-C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form6.resources

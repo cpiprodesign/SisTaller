@@ -736,9 +736,9 @@ namespace AppTaller
             //e.Graphics.DrawString("Total por servicio: " + txttotal.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 220));
 
             //e.Graphics.DrawString("Saldo : " + txtsaldo.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 210));
-            e.Graphics.DrawString("Total por servicio: " + txttotal.Text + " $ ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 200));
-            e.Graphics.DrawString("Pago adelantado: " + txtpagoadelantado.Text + " $ ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 210));
-            e.Graphics.DrawString("Pendiente : "  + txtsaldo.Text + " $ ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 220));
+            e.Graphics.DrawString("Total por servicio: " + txttotal.Text + " Gs. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 200));
+            e.Graphics.DrawString("Pago adelantado: " + txtpagoadelantado.Text + " Gs. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 210));
+            e.Graphics.DrawString("Pendiente : "  + txtsaldo.Text + " Gs. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 220));
 
 
             e.Graphics.DrawImage(image, 80, 240, image.Width, image.Height);
@@ -749,7 +749,7 @@ namespace AppTaller
             ////e.Graphics.DrawString(" Puede variar según disponibilidad de repuesto.. : " + txttotal.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 280));
             //fin antes
 
-            e.Graphics.DrawString("Pasado los 90 días la empresa no se responsabiliza ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 340));
+            e.Graphics.DrawString("Pasado los 30 días la empresa no se responsabiliza ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 340));
             e.Graphics.DrawString("por los equipos y se tomarán como abandono", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 350));
             e.Graphics.DrawString("pudiendo disponer como forma de pago ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 362));
             e.Graphics.DrawString("por el servicio brindado. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 374));
