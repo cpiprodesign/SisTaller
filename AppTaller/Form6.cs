@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace AppTaller
@@ -14,11 +15,29 @@ namespace AppTaller
     public partial class Form6 : Form
     {
         conexion cn = new conexion();
+        convertidor conv = new convertidor();
         string descripcion,codigo;
         decimal precio, importe;
         int cantidad, stock;
         //
         decimal montoTotal;
+        //comprobante
+        int numero;
+        //convertir
+        public string numeros, letras;
+        //datos de la empresa
+        string nombreEmpresa, direccion, email, Numero;
+        string telefono;
+        string letraInicialComprobante;
+        string nombrecomprobante;
+        //imprimir
+        private int numberOfItemsPerPage = 0;
+        private int numberOfItemsPrintedSoFar = 0;
+        public string idproducto,descripcionArticulo;
+        public string vencimientoI, loteI;
+
+        public decimal cantidadArticulo, precioventaArticulo, importeArticulo;
+        string nombrecomprobanteImpresion;
         public Form6()
         {
             InitializeComponent();
@@ -26,13 +45,33 @@ namespace AppTaller
 
         private void Form6_Load(object sender, EventArgs e)
         {
+            //limpiar();
             listar();
             txtcodigo.Text = "";
             txtcodigo.Focus();
             GetTipoPago();
             GetDocumento();
             Getcliente();
+            getEmpresa();
+            txtcodigo.Focus();
+            limpiar();
+            
         }
+        private void limpiar()
+        {
+            txtsubtotal.Text = "";
+            txtigv.Text = "";
+            lbtotal.Text = "";
+            cbotipopago.Text = "";
+            cbodocumento.Text = "";
+            cboclientes.Text = "";
+            txtdni.Text = "";
+            listView1.Items.Clear();
+            txtcodigo.Text = "";
+            txtcodigo.Focus();
+        
+        }
+
         private void listar()
         {
             MySqlDataAdapter da = new MySqlDataAdapter("select descripcion,PrecioVenta,stock,id from articulos where articulos.Stock >= 1", cn.ObtenerConeccion());
@@ -300,6 +339,8 @@ namespace AppTaller
         private void cbodocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
             calcularIgv();
+           
+            //generarNumero();
         }
 
         private void addArticulo()
@@ -313,6 +354,12 @@ namespace AppTaller
             listView1.Items.Add(lista);
             actualizarDetalle();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            limpiar();
+        }
+
         private void actualizarDetalle()
         {
             Decimal dblSuma = 0;
@@ -330,6 +377,35 @@ namespace AppTaller
 
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //guardarVenta();
+            if (cbotipopago.Text == "")
+            {
+                MessageBox.Show("Debes seleccionar el tipo de pago", "Sistema");
+                cbotipopago.Focus();
+            }
+            else if (cbodocumento.Text == "")
+            {
+                MessageBox.Show("Debes seleccionar el documento", "Sistema");
+                cbodocumento.Focus();
+            }
+            else if (cboclientes.Text == "")
+            {
+                MessageBox.Show("Debes seleccionar el cliente", "Sistema");
+                cboclientes.Focus();
+            }
+            else
+            {
+                //insertarVentaTransaccion();
+                //limpiar();
+
+            }
+
+
+        }
+
         private void calcularIgv()
         {
             if (cbodocumento.SelectedIndex == 0)
@@ -365,5 +441,320 @@ namespace AppTaller
 
             }
         }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                addArticulo();
+            }
+        }
+
+        private void generarNumero()
+        {
+            MySqlCommand cmd = new MySqlCommand("GenerarNumeroVenta", cn.ObtenerConeccion());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@comprobante", MySqlDbType.Int64).Value =Convert.ToInt32(label11.Text);
+
+            cn.ObtenerConeccion();
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+
+
+                    numero = Convert.ToInt32(dr.GetString(0).ToString());
+                    //cboclientes.Focus();
+                }
+            }
+            dr.Close();
+            cn.DescargarConexion();
+        }
+        private void guardarVenta()
+        {
+
+            try
+            {
+                //genera numnero de comprobante
+                generarNumero();
+                MySqlCommand cmd = new MySqlCommand("InsertarVenta", cn.ObtenerConeccion());
+                cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.Parameters.Add("@idOrden", MySqlDbType.Int64).Value = textBox1.Text;
+                cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = Convert.ToDateTime("2022-10-23 11:25:55");
+                cmd.Parameters.Add("@idCliente", MySqlDbType.Int32).Value = label12.Text;
+                cmd.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = 1;
+                cmd.Parameters.Add("@tipodePagos", MySqlDbType.Int32).Value = label10.Text;
+                cmd.Parameters.Add("@tipoDeComprobante", MySqlDbType.Int32).Value = label11.Text;
+                cmd.Parameters.Add("@numero", MySqlDbType.Int32).Value = numero;
+                cmd.Parameters.Add("@impuesto", MySqlDbType.Decimal).Value = txtigv.Text;
+                cmd.Parameters.Add("@subTotal", MySqlDbType.Decimal).Value = txtsubtotal.Text;
+                cmd.Parameters.Add("@igv", MySqlDbType.Decimal).Value = txtigv.Text;
+                cmd.Parameters.Add("@total", MySqlDbType.Decimal).Value = lbtotal.Text;
+                cmd.Parameters.Add("@estado", MySqlDbType.VarChar).Value = "Registrado";
+
+                cn.ObtenerConeccion();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Venta Registrado Corectamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //limpiar();
+                //desabilitar();
+                cn.DescargarConexion();
+                //textBox1.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void insertarVentaTransaccion()
+        {
+            {
+                try
+                {
+                    generarNumero();
+                    int nuevoId;
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+                        using (MySqlConnection cn1 = cn.ObtenerConeccion())
+                        {
+                            // cn1.Open();
+                            using (MySqlCommand cmd = cn1.CreateCommand())
+                            {
+                                //venta
+                                //genera numnero de comprobante
+                                
+                                // MySqlCommand cmd = new MySqlCommand("InsertarVenta", cn.ObtenerConeccion());
+                                cmd.CommandText = "InsertarVenta";
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                //cmd.Parameters.Add("@idOrden", MySqlDbType.Int64).Value = textBox1.Text;
+                                cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = Convert.ToDateTime(DateTime.Now.ToString("G"));
+                                cmd.Parameters.Add("@idCliente", MySqlDbType.Int32).Value = label12.Text;
+                                cmd.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = "1";
+                                cmd.Parameters.Add("@tipodePagos", MySqlDbType.Int32).Value = label10.Text;
+                                cmd.Parameters.Add("@tipoDeComprobante", MySqlDbType.Int32).Value = label11.Text;
+                                cmd.Parameters.Add("@numero", MySqlDbType.Int32).Value = numero;
+                                cmd.Parameters.Add("@impuesto", MySqlDbType.Decimal).Value = txtigv.Text;
+                                cmd.Parameters.Add("@subTotal", MySqlDbType.Decimal).Value = txtsubtotal.Text;
+                                cmd.Parameters.Add("@igv", MySqlDbType.Decimal).Value = txtigv.Text;
+                                cmd.Parameters.Add("@total", MySqlDbType.Decimal).Value = lbtotal.Text;
+                                cmd.Parameters.Add("@estado", MySqlDbType.VarChar).Value = "Registrado";
+
+                                ///cn.ObtenerConeccion();
+                                //cmd.ExecuteNonQuery();
+                                nuevoId = int.Parse(cmd.ExecuteScalar().ToString());
+                                //nuevoId = Convert.ToInt32(cmd.Parameters.Add("@NuevoId").Value);
+                                //nuevoId = Convert.ToInt32(cmd.Parameters["@idNuevo"].Value);
+                                //cn1.Close();
+
+                                //detalle
+
+                                String idproducto;
+                                decimal cantidad, precioventa, importe;
+                                cmd.CommandText = "InsertarDetalleVenta";
+                                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                                foreach (ListViewItem item in listView1.Items)
+                                {
+                                    idproducto = Convert.ToString(item.SubItems[0].Text);
+                                    cantidad = Convert.ToDecimal(item.SubItems[3].Text);
+                                    precioventa = Convert.ToDecimal(item.SubItems[2].Text);
+                                    importe = Convert.ToDecimal(item.SubItems[4].Text);
+
+                                    cmd.Parameters.Clear();
+                                    cmd.Parameters.AddWithValue("@idVenta", SqlDbType.Int).Value = nuevoId;
+                                    cmd.Parameters.AddWithValue("@idArticulo", idproducto);
+                                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                                    cmd.Parameters.AddWithValue("@precioVenta", precioventa);
+                                    cmd.Parameters.AddWithValue("@igv", SqlDbType.Decimal).Value = Convert.ToDecimal(txtigv.Text);
+                                    cmd.Parameters.AddWithValue("@descuento", SqlDbType.Decimal).Value = Convert.ToDecimal("0.00");
+                                    cmd.Parameters.AddWithValue("@subTotal", SqlDbType.Decimal).Value = Convert.ToDecimal(importe);
+                                    cmd.Parameters.AddWithValue("@Total", SqlDbType.Decimal).Value = Convert.ToDecimal(lbtotal.Text);
+                                    //cn1.Open();
+                                    cmd.ExecuteNonQuery();
+
+                                    //cn1.Close();
+                                    //MessageBox.Show("Venta registrado correctamente");
+                                }
+                                MessageBox.Show("Venta Registrado Corectamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        scope.Complete();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException("Error al guardar la venta", ex);
+                }
+            }
+        }
+        private void getEmpresa()
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("select*from empresa  ", cn.ObtenerConeccion());
+                cmd.CommandType = CommandType.Text;
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read() == true)
+                {
+                    direccion = dr["direccion"].ToString();
+                    nombreEmpresa = dr["NombreComercial"].ToString();
+                    Numero = Convert.ToString(dr["Numero"].ToString());
+
+                    telefono = (dr["telefono"].ToString());
+                    email = dr["email"].ToString();
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+
+            }
+        }
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)//TICKETERA 8.00
+        {
+            // Image image = Resources.ecuador.jpeg;
+            Image image = panel1.BackgroundImage;
+
+            // e.Graphics.DrawImage(image, 25, 25, image.Width, image.Height);
+            e.Graphics.DrawString(nombreEmpresa, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(50, 35));
+            e.Graphics.DrawString("DIRECCIÓN: " + direccion, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 60));
+            e.Graphics.DrawString("RUC: " + numero, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 90));
+            e.Graphics.DrawString("TELEFONO: " + telefono, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 120));
+
+            //e.Graphics.DrawString("________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(15, 120));
+            //factura o boleta
+
+            if (cbodocumento.SelectedIndex == 0)
+            {
+                nombrecomprobante = "BOLETA DE VENTA";
+                letraInicialComprobante = "B";
+            }
+            else if (cbodocumento.SelectedIndex == 1)
+            {
+                nombrecomprobante = "FACTURA DE VENTA";
+                letraInicialComprobante = "F";
+            }
+            else if (cbodocumento.SelectedIndex == 2)
+            {
+                nombrecomprobante = "TICKET DE VENTA";
+                letraInicialComprobante = "T";
+            }
+
+            e.Graphics.DrawString(nombrecomprobante, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(70, 140));
+            e.Graphics.DrawString(letraInicialComprobante + "-" + (numero), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(80, 160));
+
+            e.Graphics.DrawString(Convert.ToString(numero), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(150, 160));
+
+            e.Graphics.DrawString("___________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, 170));
+
+
+
+            e.Graphics.DrawString("Fecha de Emisión: " + DateTime.Now.ToShortDateString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, 190));
+            e.Graphics.DrawString("Vendedor: " + "Administrador", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, 210));
+
+            e.Graphics.DrawString("Nombre Cliente: " + cboclientes.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, 230));
+            e.Graphics.DrawString(" D.N.I o R.U.C: " + txtdni.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, 250));
+
+            e.Graphics.DrawString("___________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, 270));
+            e.Graphics.DrawString("Descripción", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, 290));
+            e.Graphics.DrawString("Cant ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(170, 290));
+            e.Graphics.DrawString("P.Unit ", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(200, 290));
+            e.Graphics.DrawString("Total", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(240, 290));
+            e.Graphics.DrawString("___________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, 300));
+
+            int yPos = 330;
+            for (int i = numberOfItemsPrintedSoFar; i < listView1.Items.Count; i++)
+            {
+                numberOfItemsPerPage++;
+
+                if (numberOfItemsPerPage <= 25)
+                {
+                    numberOfItemsPrintedSoFar++;
+
+                    if (numberOfItemsPrintedSoFar <= listView1.Items.Count)
+                    {
+
+                        foreach (ListViewItem item in listView1.Items)
+                        {
+                            descripcionArticulo = Convert.ToString(item.SubItems[1].Text);
+                            idproducto = Convert.ToString(item.SubItems[0].Text);
+                            cantidadArticulo = Convert.ToInt32(item.SubItems[3].Text);
+                            precioventaArticulo = Convert.ToDecimal(item.SubItems[2].Text);
+                            importeArticulo = Convert.ToDecimal(item.SubItems[4].Text);
+
+                            e.Graphics.DrawString(descripcionArticulo, new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(15, yPos));
+                            e.Graphics.DrawString(cantidadArticulo.ToString(), new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(190, yPos));
+                            e.Graphics.DrawString(precioventaArticulo.ToString(), new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(220, yPos));
+                            e.Graphics.DrawString(importeArticulo.ToString(), new Font("Arial", 6, FontStyle.Regular), Brushes.Black, new Point(250, yPos));
+
+                            yPos += 20;
+                        }
+                        break;
+
+                    }
+                    else
+                    {
+                        e.HasMorePages = false;
+                    }
+                }
+                else
+                {
+                    numberOfItemsPerPage = 0;
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+
+            e.Graphics.DrawString("___________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
+
+            e.Graphics.DrawString("SUB TOTAL: s/ " + txtsubtotal.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(120, yPos + 30));
+            // e.Graphics.DrawString("OP.GRAVADAS:     s/ " + lblgravada.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(220, yPos + 60));
+            e.Graphics.DrawString("IGV:           s/ " + txtigv.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(140, yPos + 60));
+
+            //e.Graphics.DrawString("Descuento : s/ " , new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(550, yPos + 60));
+            e.Graphics.DrawString("TOTAL A PAGAR: s/ " + lbtotal.Text.Trim(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(90, yPos + 90));
+
+            e.Graphics.DrawString("SON:" + (letras + " SOLES"), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(15, yPos + 120));
+
+            e.Graphics.DrawString("¡CANJEAR BOLETA O FACTURA !", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(15, yPos + 150));
+
+
+            e.Graphics.DrawString("GRACIAS POR SU PREFERENCIA:  " + " ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(15, yPos + 180));
+            //e.Graphics.DrawString("Regrese Pronto. :  "+TextBox4.Text, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(15, yPos + 210));
+            e.Graphics.DrawImage(image, 90, yPos + 195, image.Width, image.Height);
+
+            // reset the variables
+            numberOfItemsPerPage = 0;
+            numberOfItemsPrintedSoFar = 0;
+
+
+
+        }
+        private void leer()
+        {
+            numeros = lbtotal.Text;
+            letras = conv.enletras(numeros);
+
+        }
+
     }
+    
 }
