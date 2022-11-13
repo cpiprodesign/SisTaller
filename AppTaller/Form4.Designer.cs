@@ -111,8 +111,8 @@ namespace AppTaller
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 102);
             this.dataGridView1.Name = "dataGridView1";
@@ -166,13 +166,16 @@ namespace AppTaller
             // 
             // txttotal
             // 
+            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(197)))), ((int)(((byte)(0)))));
+            this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotal.ForeColor = System.Drawing.Color.White;
             this.txttotal.Location = new System.Drawing.Point(680, 412);
             this.txttotal.Name = "txttotal";
             this.txttotal.ReadOnly = true;
-            this.txttotal.Size = new System.Drawing.Size(65, 20);
+            this.txttotal.Size = new System.Drawing.Size(65, 22);
             this.txttotal.TabIndex = 42;
             this.txttotal.Text = "0.00";
-            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label6
             // 
@@ -185,13 +188,14 @@ namespace AppTaller
             // 
             // txtadelantado
             // 
+            this.txtadelantado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtadelantado.Location = new System.Drawing.Point(680, 364);
             this.txtadelantado.Name = "txtadelantado";
             this.txtadelantado.ReadOnly = true;
-            this.txtadelantado.Size = new System.Drawing.Size(65, 20);
+            this.txtadelantado.Size = new System.Drawing.Size(65, 22);
             this.txtadelantado.TabIndex = 40;
             this.txtadelantado.Text = "0.00";
-            this.txtadelantado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtadelantado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 
@@ -204,13 +208,14 @@ namespace AppTaller
             // 
             // txtcobrar
             // 
+            this.txtcobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcobrar.Location = new System.Drawing.Point(680, 389);
             this.txtcobrar.Name = "txtcobrar";
             this.txtcobrar.ReadOnly = true;
-            this.txtcobrar.Size = new System.Drawing.Size(65, 20);
+            this.txtcobrar.Size = new System.Drawing.Size(65, 22);
             this.txtcobrar.TabIndex = 44;
             this.txtcobrar.Text = "0.00";
-            this.txtcobrar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtcobrar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 

@@ -121,7 +121,7 @@ namespace AppTaller
                         libros_trabajo.SaveAs(fichero.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                         libros_trabajo.Close(true);
                         aplicacion.Quit();
-                        MessageBox.Show("Datos exportados correctamente");
+                        MessageBox.Show("Datos exportados correctamente","Sistema" ,MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

@@ -297,7 +297,7 @@ namespace AppTaller
                 }
                 else
                 {
-                    MessageBox.Show("No hay datos con ese codigo de orden","Sistema");
+                    MessageBox.Show("No hay datos con ese codigo de orden","Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     limpiar();
                     desabilitar();
 
