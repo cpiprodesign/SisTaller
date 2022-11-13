@@ -1,9 +1,14 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Gma.QrCodeNet.Encoding;
+using Gma.QrCodeNet.Encoding.Windows.Render;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +50,7 @@ namespace AppTaller
 
         private void Form6_Load(object sender, EventArgs e)
         {
+           
             //limpiar();
             listar();
             txtcodigo.Text = "";
@@ -55,7 +61,7 @@ namespace AppTaller
             getEmpresa();
             txtcodigo.Focus();
             limpiar();
-            
+            cn.DescargarConexion();
         }
         private void limpiar()
         {
@@ -69,7 +75,9 @@ namespace AppTaller
             listView1.Items.Clear();
             txtcodigo.Text = "";
             txtcodigo.Focus();
-        
+            panel1.BackgroundImage = null;
+
+
         }
 
         private void listar()
@@ -160,7 +168,7 @@ namespace AppTaller
             try
             {
                 MySqlConnection conexion = new MySqlConnection();
-                MySqlCommand cmd = new MySqlCommand("select*from clientes ", cn.ObtenerConeccion());
+                MySqlCommand cmd = new MySqlCommand("select*from clientes order by id desc ", cn.ObtenerConeccion());
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -199,6 +207,8 @@ namespace AppTaller
         {
             //Form2 frm = new Form2(this);
             //frm.ShowDialog();
+           FrmAddClienteVenta f = new FrmAddClienteVenta(this);
+            f.ShowDialog();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -378,6 +388,44 @@ namespace AppTaller
 
         }
 
+        private void button4_Click_2(object sender, EventArgs e)
+        {
+            if (lbtotal.Text == "" || lbtotal.Text == "0.00" || lbtotal.Text == "0")
+            {
+                MessageBox.Show("Debes generar una venta antes de imprimir", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Deseas Imprimir el Comprobante ?", "Sistema", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    leer();
+                    generarQr();
+                    //printDocument.Print();
+                    PrintDocument pd = new PrintDocument();
+                    //a4
+                    // PaperSize ps = new PaperSize("factura", 827, 1169);
+                    PaperSize ps = new PaperSize("Boleta", 300, 900);
+                    // PaperSize ps = new PaperSize("Boleta", 200, 600);
+                    pd.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+
+                    pd.PrintController = new StandardPrintController();
+                    pd.DefaultPageSettings.Margins.Left = 0;
+                    pd.DefaultPageSettings.Margins.Right = 0;
+                    pd.DefaultPageSettings.Margins.Top = 0;
+                    pd.DefaultPageSettings.Margins.Bottom = 0;
+
+                    pd.DefaultPageSettings.PaperSize = ps;
+                    pd.Print();
+                    
+                }
+                else
+                {
+                    MessageBox.Show("No se imprimio el comprobante","Sistema");
+                }
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             //guardarVenta();
@@ -396,11 +444,24 @@ namespace AppTaller
                 MessageBox.Show("Debes seleccionar el cliente", "Sistema");
                 cboclientes.Focus();
             }
+            else if (listView1.Items.Count == 0)
+            {
+                MessageBox.Show("No has ingresado los Articulos","sistema");
+                txtcodigo.Focus();
+            }
             else
             {
-                //insertarVentaTransaccion();
-                //limpiar();
+                DialogResult dialogResult = MessageBox.Show("Deseas Imprimir el Comprobante ?", "Sistema", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
 
+                    button4_Click_2(sender, e);
+                    
+                }
+                //guarda la venta
+                insertarVentaTransaccion();
+                listar();
+                limpiar();
             }
 
 
@@ -468,6 +529,7 @@ namespace AppTaller
 
             cn.ObtenerConeccion();
             MySqlDataReader dr = cmd.ExecuteReader();
+            cn.DescargarConexion();
 
             if (dr.HasRows)
             {
@@ -526,9 +588,11 @@ namespace AppTaller
                     int nuevoId;
                     using (TransactionScope scope = new TransactionScope())
                     {
+                        
                         using (MySqlConnection cn1 = cn.ObtenerConeccion())
                         {
-                            // cn1.Open();
+                             
+
                             using (MySqlCommand cmd = cn1.CreateCommand())
                             {
                                 //venta
@@ -539,6 +603,8 @@ namespace AppTaller
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 //cmd.Parameters.Add("@idOrden", MySqlDbType.Int64).Value = textBox1.Text;
                                 cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = Convert.ToDateTime(DateTime.Now.ToString("G"));
+                                //cmd.Parameters.Add("@fecha", MySqlDbType.DateTime).Value = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));
+
                                 cmd.Parameters.Add("@idCliente", MySqlDbType.Int32).Value = label12.Text;
                                 cmd.Parameters.Add("@idUsuario", MySqlDbType.Int32).Value = "1";
                                 cmd.Parameters.Add("@tipodePagos", MySqlDbType.Int32).Value = label10.Text;
@@ -550,9 +616,10 @@ namespace AppTaller
                                 cmd.Parameters.Add("@total", MySqlDbType.Decimal).Value = lbtotal.Text;
                                 cmd.Parameters.Add("@estado", MySqlDbType.VarChar).Value = "Registrado";
 
-                                ///cn.ObtenerConeccion();
+                              // cn1.Open();
                                 //cmd.ExecuteNonQuery();
                                 nuevoId = int.Parse(cmd.ExecuteScalar().ToString());
+                                //cn1.Close();
                                 //nuevoId = Convert.ToInt32(cmd.Parameters.Add("@NuevoId").Value);
                                 //nuevoId = Convert.ToInt32(cmd.Parameters["@idNuevo"].Value);
                                 //cn1.Close();
@@ -581,10 +648,10 @@ namespace AppTaller
                                     cmd.Parameters.AddWithValue("@descuento", SqlDbType.Decimal).Value = Convert.ToDecimal("0.00");
                                     cmd.Parameters.AddWithValue("@subTotal", SqlDbType.Decimal).Value = Convert.ToDecimal(importe);
                                     cmd.Parameters.AddWithValue("@Total", SqlDbType.Decimal).Value = Convert.ToDecimal(lbtotal.Text);
-                                    //cn1.Open();
+                                    
                                     cmd.ExecuteNonQuery();
 
-                                    //cn1.Close();
+                                   //cn1.Close();
                                     //MessageBox.Show("Venta registrado correctamente");
                                 }
                                 MessageBox.Show("Venta Registrado Corectamente", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -725,14 +792,14 @@ namespace AppTaller
 
             e.Graphics.DrawString("___________________________________", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
 
-            e.Graphics.DrawString("SUB TOTAL: s/ " + txtsubtotal.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(120, yPos + 30));
+            e.Graphics.DrawString("SUB TOTAL: S/. " + txtsubtotal.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(120, yPos + 30));
             // e.Graphics.DrawString("OP.GRAVADAS:     s/ " + lblgravada.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(220, yPos + 60));
-            e.Graphics.DrawString("IGV:           s/ " + txtigv.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(140, yPos + 60));
+            e.Graphics.DrawString("IVA:           S/. " + txtigv.Text.Trim(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(140, yPos + 60));
 
             //e.Graphics.DrawString("Descuento : s/ " , new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(550, yPos + 60));
-            e.Graphics.DrawString("TOTAL A PAGAR: s/ " + lbtotal.Text.Trim(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(90, yPos + 90));
+            e.Graphics.DrawString("TOTAL A PAGAR: S/. " + lbtotal.Text.Trim(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(90, yPos + 90));
 
-            e.Graphics.DrawString("SON:" + (letras + " SOLES"), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(15, yPos + 120));
+            e.Graphics.DrawString("SON:" + (letras + " S/."), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(15, yPos + 120));
 
             e.Graphics.DrawString("¡CANJEAR BOLETA O FACTURA !", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(15, yPos + 150));
 
@@ -752,6 +819,38 @@ namespace AppTaller
         {
             numeros = lbtotal.Text;
             letras = conv.enletras(numeros);
+
+        }
+        private void generarQr()
+        {
+            QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+            QrCode qrCode = new QrCode();
+
+            string unir = Convert.ToString(nombreEmpresa + "|" + DateTime.Now + "|" + numero + "|" + cboclientes.Text+ "|" + nombrecomprobante + "|" + numero + "|" + txtsubtotal.Text + "|" + txtigv.Text + "|" + lbtotal.Text);
+            qrEncoder.TryEncode(unir, out qrCode);
+
+            GraphicsRenderer renderer = new GraphicsRenderer(new FixedCodeSize(400, QuietZoneModules.Zero), Brushes.Black, Brushes.White);
+
+            MemoryStream ms = new MemoryStream();
+
+            renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, ms);
+            var imageTemporal = new Bitmap(ms);
+            var imagen = new Bitmap(imageTemporal, new Size(new Point(100, 100)));
+            panel1.BackgroundImage = imagen;
+
+            // Guardar en el disco duro la imagen (Carpeta del proyecto)
+            //imagen.Save("imagen.png", ImageFormat.Png);
+
+        }
+        public void actualizarCliente()
+        {
+            cboclientes.DataSource = null;
+            cboclientes.DataBindings.Clear();
+            label12.DataBindings.Clear();
+            txtdni.DataBindings.Clear();
+
+
+            Getcliente();
 
         }
 

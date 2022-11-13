@@ -35,6 +35,9 @@ namespace AppTaller
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.bunifuFlatButton11 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuFlatButton10 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton9 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton8 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
@@ -147,6 +150,9 @@ namespace AppTaller
             // 
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton11);
+            this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton10);
+            this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton2);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton9);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton8);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuCards2);
@@ -172,18 +178,122 @@ namespace AppTaller
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton4);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton3);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton1);
-            this.bunifuGradientPanel1.Controls.Add(this.panel1);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Blue;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.Blue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.DeepSkyBlue;
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.DeepPink;
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.Crimson;
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1200, 700);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1291, 700);
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
+            // 
+            // bunifuFlatButton11
+            // 
+            this.bunifuFlatButton11.Activecolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bunifuFlatButton11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton11.BackgroundImage")));
+            this.bunifuFlatButton11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton11.BorderRadius = 6;
+            this.bunifuFlatButton11.ButtonText = "";
+            this.bunifuFlatButton11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton11.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton11.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton11.Iconimage = null;
+            this.bunifuFlatButton11.Iconimage_right = null;
+            this.bunifuFlatButton11.Iconimage_right_Selected = null;
+            this.bunifuFlatButton11.Iconimage_Selected = null;
+            this.bunifuFlatButton11.IconMarginLeft = 0;
+            this.bunifuFlatButton11.IconMarginRight = 0;
+            this.bunifuFlatButton11.IconRightVisible = true;
+            this.bunifuFlatButton11.IconRightZoom = 0D;
+            this.bunifuFlatButton11.IconVisible = true;
+            this.bunifuFlatButton11.IconZoom = 90D;
+            this.bunifuFlatButton11.IsTab = false;
+            this.bunifuFlatButton11.Location = new System.Drawing.Point(1063, 93);
+            this.bunifuFlatButton11.Name = "bunifuFlatButton11";
+            this.bunifuFlatButton11.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bunifuFlatButton11.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuFlatButton11.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton11.selected = false;
+            this.bunifuFlatButton11.Size = new System.Drawing.Size(45, 44);
+            this.bunifuFlatButton11.TabIndex = 49;
+            this.bunifuFlatButton11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton11.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton11.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton11.Click += new System.EventHandler(this.bunifuFlatButton11_Click);
+            // 
+            // bunifuFlatButton10
+            // 
+            this.bunifuFlatButton10.Activecolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton10.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton10.BorderRadius = 6;
+            this.bunifuFlatButton10.ButtonText = "Consultas";
+            this.bunifuFlatButton10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton10.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton10.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton10.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton10.Iconimage")));
+            this.bunifuFlatButton10.Iconimage_right = null;
+            this.bunifuFlatButton10.Iconimage_right_Selected = null;
+            this.bunifuFlatButton10.Iconimage_Selected = null;
+            this.bunifuFlatButton10.IconMarginLeft = 5;
+            this.bunifuFlatButton10.IconMarginRight = 0;
+            this.bunifuFlatButton10.IconRightVisible = true;
+            this.bunifuFlatButton10.IconRightZoom = 0D;
+            this.bunifuFlatButton10.IconVisible = true;
+            this.bunifuFlatButton10.IconZoom = 90D;
+            this.bunifuFlatButton10.IsTab = false;
+            this.bunifuFlatButton10.Location = new System.Drawing.Point(1006, 12);
+            this.bunifuFlatButton10.Name = "bunifuFlatButton10";
+            this.bunifuFlatButton10.Normalcolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton10.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuFlatButton10.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton10.selected = false;
+            this.bunifuFlatButton10.Size = new System.Drawing.Size(123, 54);
+            this.bunifuFlatButton10.TabIndex = 48;
+            this.bunifuFlatButton10.Text = "Consultas";
+            this.bunifuFlatButton10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton10.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton10.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton10.Click += new System.EventHandler(this.bunifuFlatButton10_Click);
+            // 
+            // bunifuFlatButton2
+            // 
+            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton2.BorderRadius = 6;
+            this.bunifuFlatButton2.ButtonText = "Venta";
+            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton2.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton2.Iconimage")));
+            this.bunifuFlatButton2.Iconimage_right = null;
+            this.bunifuFlatButton2.Iconimage_right_Selected = null;
+            this.bunifuFlatButton2.Iconimage_Selected = null;
+            this.bunifuFlatButton2.IconMarginLeft = 5;
+            this.bunifuFlatButton2.IconMarginRight = 0;
+            this.bunifuFlatButton2.IconRightVisible = true;
+            this.bunifuFlatButton2.IconRightZoom = 0D;
+            this.bunifuFlatButton2.IconVisible = true;
+            this.bunifuFlatButton2.IconZoom = 90D;
+            this.bunifuFlatButton2.IsTab = false;
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(895, 12);
+            this.bunifuFlatButton2.Name = "bunifuFlatButton2";
+            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton2.selected = false;
+            this.bunifuFlatButton2.Size = new System.Drawing.Size(104, 54);
+            this.bunifuFlatButton2.TabIndex = 47;
+            this.bunifuFlatButton2.Text = "Venta";
+            this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton2.Click += new System.EventHandler(this.bunifuFlatButton2_Click_1);
             // 
             // bunifuFlatButton9
             // 
@@ -206,13 +316,13 @@ namespace AppTaller
             this.bunifuFlatButton9.IconVisible = true;
             this.bunifuFlatButton9.IconZoom = 90D;
             this.bunifuFlatButton9.IsTab = false;
-            this.bunifuFlatButton9.Location = new System.Drawing.Point(581, 12);
+            this.bunifuFlatButton9.Location = new System.Drawing.Point(482, 12);
             this.bunifuFlatButton9.Name = "bunifuFlatButton9";
             this.bunifuFlatButton9.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.bunifuFlatButton9.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuFlatButton9.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton9.selected = false;
-            this.bunifuFlatButton9.Size = new System.Drawing.Size(150, 54);
+            this.bunifuFlatButton9.Size = new System.Drawing.Size(122, 54);
             this.bunifuFlatButton9.TabIndex = 46;
             this.bunifuFlatButton9.Text = "Articulos";
             this.bunifuFlatButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -241,7 +351,7 @@ namespace AppTaller
             this.bunifuFlatButton8.IconVisible = true;
             this.bunifuFlatButton8.IconZoom = 90D;
             this.bunifuFlatButton8.IsTab = false;
-            this.bunifuFlatButton8.Location = new System.Drawing.Point(1086, 12);
+            this.bunifuFlatButton8.Location = new System.Drawing.Point(1135, 12);
             this.bunifuFlatButton8.Name = "bunifuFlatButton8";
             this.bunifuFlatButton8.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.bunifuFlatButton8.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
@@ -319,7 +429,7 @@ namespace AppTaller
             this.bunifuCards1.Controls.Add(this.label34);
             this.bunifuCards1.Controls.Add(this.label33);
             this.bunifuCards1.LeftSahddow = false;
-            this.bunifuCards1.Location = new System.Drawing.Point(996, 139);
+            this.bunifuCards1.Location = new System.Drawing.Point(996, 149);
             this.bunifuCards1.Name = "bunifuCards1";
             this.bunifuCards1.RightSahddow = true;
             this.bunifuCards1.ShadowDepth = 20;
@@ -368,7 +478,7 @@ namespace AppTaller
             this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label32.Location = new System.Drawing.Point(1060, 512);
+            this.label32.Location = new System.Drawing.Point(1060, 656);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(89, 17);
             this.label32.TabIndex = 39;
@@ -378,7 +488,7 @@ namespace AppTaller
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.Location = new System.Drawing.Point(1006, 496);
+            this.panel3.Location = new System.Drawing.Point(1006, 640);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(48, 51);
             this.panel3.TabIndex = 38;
@@ -389,7 +499,7 @@ namespace AppTaller
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label31.Location = new System.Drawing.Point(1060, 454);
+            this.label31.Location = new System.Drawing.Point(1060, 598);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(104, 17);
             this.label31.TabIndex = 38;
@@ -399,7 +509,7 @@ namespace AppTaller
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.Location = new System.Drawing.Point(1006, 439);
+            this.panel2.Location = new System.Drawing.Point(1006, 583);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(48, 51);
             this.panel2.TabIndex = 37;
@@ -410,7 +520,7 @@ namespace AppTaller
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label29.Location = new System.Drawing.Point(1024, 407);
+            this.label29.Location = new System.Drawing.Point(1024, 551);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(125, 20);
             this.label29.TabIndex = 36;
@@ -461,7 +571,7 @@ namespace AppTaller
             this.bunifuFlatButton7.IconVisible = true;
             this.bunifuFlatButton7.IconZoom = 90D;
             this.bunifuFlatButton7.IsTab = false;
-            this.bunifuFlatButton7.Location = new System.Drawing.Point(921, 12);
+            this.bunifuFlatButton7.Location = new System.Drawing.Point(739, 12);
             this.bunifuFlatButton7.Name = "bunifuFlatButton7";
             this.bunifuFlatButton7.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.bunifuFlatButton7.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
@@ -496,13 +606,13 @@ namespace AppTaller
             this.bunifuFlatButton6.IconVisible = true;
             this.bunifuFlatButton6.IconZoom = 90D;
             this.bunifuFlatButton6.IsTab = false;
-            this.bunifuFlatButton6.Location = new System.Drawing.Point(750, 12);
+            this.bunifuFlatButton6.Location = new System.Drawing.Point(610, 12);
             this.bunifuFlatButton6.Name = "bunifuFlatButton6";
             this.bunifuFlatButton6.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.bunifuFlatButton6.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuFlatButton6.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton6.selected = false;
-            this.bunifuFlatButton6.Size = new System.Drawing.Size(150, 54);
+            this.bunifuFlatButton6.Size = new System.Drawing.Size(121, 54);
             this.bunifuFlatButton6.TabIndex = 28;
             this.bunifuFlatButton6.Text = "Tecnico";
             this.bunifuFlatButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -656,17 +766,17 @@ namespace AppTaller
             // 
             // txtsaldo
             // 
-            this.txtsaldo.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.txtsaldo.BackColor = System.Drawing.Color.AliceBlue;
             this.txtsaldo.BorderColorFocused = System.Drawing.Color.Blue;
-            this.txtsaldo.BorderColorIdle = System.Drawing.Color.White;
+            this.txtsaldo.BorderColorIdle = System.Drawing.Color.Transparent;
             this.txtsaldo.BorderColorMouseHover = System.Drawing.Color.Blue;
             this.txtsaldo.BorderThickness = 3;
             this.txtsaldo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtsaldo.Enabled = false;
-            this.txtsaldo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsaldo.ForeColor = System.Drawing.Color.White;
+            this.txtsaldo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txtsaldo.isPassword = false;
-            this.txtsaldo.Location = new System.Drawing.Point(779, 48);
+            this.txtsaldo.Location = new System.Drawing.Point(828, 60);
             this.txtsaldo.Margin = new System.Windows.Forms.Padding(4);
             this.txtsaldo.Name = "txtsaldo";
             this.txtsaldo.Size = new System.Drawing.Size(105, 31);
@@ -680,7 +790,7 @@ namespace AppTaller
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(727, 59);
+            this.label19.Location = new System.Drawing.Point(776, 71);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(54, 20);
             this.label19.TabIndex = 42;
@@ -750,7 +860,7 @@ namespace AppTaller
             this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.YellowGreen;
             this.bunifuFlatButton5.OnHoverTextColor = System.Drawing.Color.Black;
             this.bunifuFlatButton5.selected = false;
-            this.bunifuFlatButton5.Size = new System.Drawing.Size(150, 54);
+            this.bunifuFlatButton5.Size = new System.Drawing.Size(126, 54);
             this.bunifuFlatButton5.TabIndex = 13;
             this.bunifuFlatButton5.Text = "Guardar .";
             this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -761,16 +871,16 @@ namespace AppTaller
             // 
             // txttotal
             // 
-            this.txttotal.BackColor = System.Drawing.Color.Blue;
+            this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txttotal.BorderColorFocused = System.Drawing.Color.Blue;
-            this.txttotal.BorderColorIdle = System.Drawing.Color.White;
+            this.txttotal.BorderColorIdle = System.Drawing.Color.Transparent;
             this.txttotal.BorderColorMouseHover = System.Drawing.Color.Blue;
             this.txttotal.BorderThickness = 3;
             this.txttotal.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txttotal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttotal.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotal.ForeColor = System.Drawing.Color.White;
             this.txttotal.isPassword = false;
-            this.txttotal.Location = new System.Drawing.Point(779, 86);
+            this.txttotal.Location = new System.Drawing.Point(828, 98);
             this.txttotal.Margin = new System.Windows.Forms.Padding(4);
             this.txttotal.Name = "txttotal";
             this.txttotal.Size = new System.Drawing.Size(105, 31);
@@ -785,7 +895,7 @@ namespace AppTaller
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(727, 97);
+            this.label24.Location = new System.Drawing.Point(776, 109);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(48, 20);
             this.label24.TabIndex = 35;
@@ -793,16 +903,16 @@ namespace AppTaller
             // 
             // txtpagoadelantado
             // 
-            this.txtpagoadelantado.BackColor = System.Drawing.Color.Blue;
+            this.txtpagoadelantado.BackColor = System.Drawing.Color.Lavender;
             this.txtpagoadelantado.BorderColorFocused = System.Drawing.Color.Blue;
-            this.txtpagoadelantado.BorderColorIdle = System.Drawing.Color.White;
+            this.txtpagoadelantado.BorderColorIdle = System.Drawing.Color.Transparent;
             this.txtpagoadelantado.BorderColorMouseHover = System.Drawing.Color.Blue;
             this.txtpagoadelantado.BorderThickness = 3;
             this.txtpagoadelantado.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtpagoadelantado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpagoadelantado.ForeColor = System.Drawing.Color.White;
+            this.txtpagoadelantado.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpagoadelantado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txtpagoadelantado.isPassword = false;
-            this.txtpagoadelantado.Location = new System.Drawing.Point(779, 10);
+            this.txtpagoadelantado.Location = new System.Drawing.Point(828, 22);
             this.txtpagoadelantado.Margin = new System.Windows.Forms.Padding(5);
             this.txtpagoadelantado.Name = "txtpagoadelantado";
             this.txtpagoadelantado.Size = new System.Drawing.Size(105, 29);
@@ -817,7 +927,7 @@ namespace AppTaller
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(639, 19);
+            this.label23.Location = new System.Drawing.Point(688, 31);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(136, 20);
             this.label23.TabIndex = 33;
@@ -887,7 +997,7 @@ namespace AppTaller
             this.txtreparacion.LineIdleColor = System.Drawing.Color.Gray;
             this.txtreparacion.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtreparacion.LineThickness = 3;
-            this.txtreparacion.Location = new System.Drawing.Point(134, 69);
+            this.txtreparacion.Location = new System.Drawing.Point(134, 83);
             this.txtreparacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtreparacion.Name = "txtreparacion";
             this.txtreparacion.Size = new System.Drawing.Size(750, 33);
@@ -900,7 +1010,7 @@ namespace AppTaller
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(10, 82);
+            this.label20.Location = new System.Drawing.Point(10, 96);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(95, 20);
             this.label20.TabIndex = 27;
@@ -918,7 +1028,7 @@ namespace AppTaller
             this.txtfalla.LineIdleColor = System.Drawing.Color.Gray;
             this.txtfalla.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.txtfalla.LineThickness = 3;
-            this.txtfalla.Location = new System.Drawing.Point(134, 28);
+            this.txtfalla.Location = new System.Drawing.Point(134, 42);
             this.txtfalla.Margin = new System.Windows.Forms.Padding(4);
             this.txtfalla.Name = "txtfalla";
             this.txtfalla.Size = new System.Drawing.Size(750, 33);
@@ -931,7 +1041,7 @@ namespace AppTaller
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label18.Location = new System.Drawing.Point(10, 41);
+            this.label18.Location = new System.Drawing.Point(10, 55);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(121, 20);
             this.label18.TabIndex = 23;
@@ -940,10 +1050,11 @@ namespace AppTaller
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(197, 9);
+            this.label17.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label17.Location = new System.Drawing.Point(190, 18);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(245, 20);
+            this.label17.Size = new System.Drawing.Size(257, 18);
             this.label17.TabIndex = 23;
             this.label17.Text = "CARACTERISTICAS DE FALLA.";
             // 
@@ -968,6 +1079,7 @@ namespace AppTaller
             this.panelequipo.Controls.Add(this.txtequipo);
             this.panelequipo.Controls.Add(this.label10);
             this.panelequipo.Controls.Add(this.label2);
+            this.panelequipo.Controls.Add(this.panel1);
             this.panelequipo.LeftSahddow = false;
             this.panelequipo.Location = new System.Drawing.Point(513, 139);
             this.panelequipo.Name = "panelequipo";
@@ -1199,10 +1311,11 @@ namespace AppTaller
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.label2.Location = new System.Drawing.Point(170, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 20);
+            this.label2.Size = new System.Drawing.Size(172, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "DATOS DEL EQUIPO";
             // 
@@ -1431,10 +1544,11 @@ namespace AppTaller
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(170, 8);
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(153, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 20);
+            this.label1.Size = new System.Drawing.Size(178, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "DATOS DEL CLIENTE";
             // 
@@ -1468,7 +1582,7 @@ namespace AppTaller
             this.bunifuFlatButton4.IconVisible = true;
             this.bunifuFlatButton4.IconZoom = 90D;
             this.bunifuFlatButton4.IsTab = false;
-            this.bunifuFlatButton4.Location = new System.Drawing.Point(245, 12);
+            this.bunifuFlatButton4.Location = new System.Drawing.Point(185, 12);
             this.bunifuFlatButton4.Name = "bunifuFlatButton4";
             this.bunifuFlatButton4.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
@@ -1503,13 +1617,13 @@ namespace AppTaller
             this.bunifuFlatButton3.IconVisible = true;
             this.bunifuFlatButton3.IconZoom = 90D;
             this.bunifuFlatButton3.IsTab = false;
-            this.bunifuFlatButton3.Location = new System.Drawing.Point(418, 12);
+            this.bunifuFlatButton3.Location = new System.Drawing.Point(344, 12);
             this.bunifuFlatButton3.Name = "bunifuFlatButton3";
             this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton3.selected = false;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(150, 54);
+            this.bunifuFlatButton3.Size = new System.Drawing.Size(131, 54);
             this.bunifuFlatButton3.TabIndex = 3;
             this.bunifuFlatButton3.Text = "Reportes";
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1538,7 +1652,7 @@ namespace AppTaller
             this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 90D;
             this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(75, 12);
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(25, 12);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.CornflowerBlue;
             this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
@@ -1554,7 +1668,7 @@ namespace AppTaller
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(750, 58);
+            this.panel1.Location = new System.Drawing.Point(186, 38);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(229, 186);
             this.panel1.TabIndex = 30;
@@ -1569,7 +1683,7 @@ namespace AppTaller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.ClientSize = new System.Drawing.Size(1291, 700);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
@@ -1685,6 +1799,9 @@ namespace AppTaller
         private System.Windows.Forms.Timer timer2;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton8;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton9;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton10;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton11;
     }
 }
 

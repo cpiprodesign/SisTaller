@@ -865,7 +865,7 @@ namespace AppTaller
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            getlistarOrdenes();
+            //getlistarOrdenes();
         }
 
         private void bunifuFlatButton8_Click(object sender, EventArgs e)
@@ -886,20 +886,52 @@ namespace AppTaller
             fr.ShowDialog();
         }
 
+        private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
+        {
+            Form6 fr = new Form6();
+            fr.ShowDialog();
+
+        }
+
+        private void bunifuFlatButton10_Click(object sender, EventArgs e)
+        {
+            FrmReporteventas fr = new FrmReporteventas();
+            fr.ShowDialog();
+        }
+
+       
+
+        private void bunifuFlatButton11_Click(object sender, EventArgs e)
+        {
+            getlistarOrdenes();
+        }
+
         private void Lblestado_Click(object sender, EventArgs e)
         {
 
         }
         private void getlistarOrdenes()
         {
-            int lista;
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT *FROM orden WHERE Estado='No Entregado'", cn.ObtenerConeccion());
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            //dataGridView1.DataSource = dt;
-            lista = dt.Rows.Count;
-            label35.Text = Convert.ToString(lista);
-
+            try
+            {
+                int lista;
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT *FROM orden WHERE Estado='No Entregado'", cn.ObtenerConeccion());
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                //dataGridView1.DataSource = dt;
+                lista = dt.Rows.Count;
+                label35.Text = Convert.ToString(lista);
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cn.DescargarConexion();
+            }
+            
         }
         private void getEmpresa()
         {

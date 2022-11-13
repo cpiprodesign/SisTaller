@@ -141,6 +141,12 @@
     <Compile Include="Form6.Designer.cs">
       <DependentUpon>Form6.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAddClienteVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddClienteVenta.Designer.cs">
+      <DependentUpon>FrmAddClienteVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCategoriacs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,12 @@
     </Compile>
     <Compile Include="FrmMarca.Designer.cs">
       <DependentUpon>FrmMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReporteventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteventas.Designer.cs">
+      <DependentUpon>FrmReporteventas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,6 +191,9 @@
     <EmbeddedResource Include="Form6.resx">
       <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddClienteVenta.resx">
+      <DependentUpon>FrmAddClienteVenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCategoriacs.resx">
       <DependentUpon>FrmCategoriacs.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMarca.resx">
       <DependentUpon>FrmMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteventas.resx">
+      <DependentUpon>FrmReporteventas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
