@@ -101,6 +101,7 @@ namespace AppTaller
             this.txtequipo = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panelclientes = new Bunifu.Framework.UI.BunifuCards();
@@ -120,7 +121,6 @@ namespace AppTaller
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
             this.bunifuCards2.SuspendLayout();
@@ -915,7 +915,7 @@ namespace AppTaller
             this.txtpagoadelantado.Location = new System.Drawing.Point(828, 22);
             this.txtpagoadelantado.Margin = new System.Windows.Forms.Padding(5);
             this.txtpagoadelantado.Name = "txtpagoadelantado";
-            this.txtpagoadelantado.Size = new System.Drawing.Size(105, 29);
+            this.txtpagoadelantado.Size = new System.Drawing.Size(105, 33);
             this.txtpagoadelantado.TabIndex = 32;
             this.txtpagoadelantado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtpagoadelantado.OnValueChanged += new System.EventHandler(this.txtpagoadelantado_OnValueChanged);
@@ -1319,6 +1319,14 @@ namespace AppTaller
             this.label2.TabIndex = 1;
             this.label2.Text = "DATOS DEL EQUIPO";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(186, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(229, 186);
+            this.panel1.TabIndex = 30;
+            this.panel1.Visible = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1665,14 +1673,6 @@ namespace AppTaller
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(186, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(229, 186);
-            this.panel1.TabIndex = 30;
-            this.panel1.Visible = false;
             // 
             // timer2
             // 
