@@ -144,6 +144,7 @@ namespace AppTaller
             this.txtcodigo.Size = new System.Drawing.Size(204, 20);
             this.txtcodigo.TabIndex = 3;
             this.txtcodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcodigo_KeyDown_1);
+            this.txtcodigo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtcodigo_MouseDown);
             // 
             // checkBox1
             // 
@@ -163,7 +164,7 @@ namespace AppTaller
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.label1.Location = new System.Drawing.Point(8, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(247, 16);
+            this.label1.Size = new System.Drawing.Size(246, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Escanee o ingrese el codigo del  articulo";
             // 

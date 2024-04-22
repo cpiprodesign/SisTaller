@@ -28,6 +28,7 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\bin\Debug\System.Buffers
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\bin\Debug\System.Memory.xml
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.AssemblyReference.cache
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form1.resources
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form2.resources
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Form3.resources
@@ -45,4 +46,3 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.cspr
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.CopyComplete
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.exe
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.pdb
-C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.AssemblyReference.cache

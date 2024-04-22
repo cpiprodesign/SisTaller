@@ -61,7 +61,11 @@ namespace AppTaller
             this.lblfecha = new System.Windows.Forms.Label();
             this.txtorden = new Bunifu.Framework.UI.BunifuTextbox();
             this.panelfechas = new Bunifu.Framework.UI.BunifuCards();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.btncancelar = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuFlatButton5 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
             this.Lblestado = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.bunifuiOSSwitch1 = new Bunifu.Framework.UI.BunifuiOSSwitch();
@@ -71,7 +75,6 @@ namespace AppTaller
             this.dtpfechaentrega = new System.Windows.Forms.DateTimePicker();
             this.label25 = new System.Windows.Forms.Label();
             this.cbotecnico = new System.Windows.Forms.ComboBox();
-            this.bunifuFlatButton5 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.txttotal = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtpagoadelantado = new Bunifu.Framework.UI.BunifuMetroTextbox();
@@ -126,6 +129,8 @@ namespace AppTaller
             this.bunifuCards2.SuspendLayout();
             this.bunifuCards1.SuspendLayout();
             this.panelfechas.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.bunifuCards3.SuspendLayout();
             this.panelequipo.SuspendLayout();
             this.panelclientes.SuspendLayout();
@@ -148,6 +153,7 @@ namespace AppTaller
             // 
             // bunifuGradientPanel1
             // 
+            this.bunifuGradientPanel1.AutoScroll = true;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton11);
@@ -181,12 +187,12 @@ namespace AppTaller
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Blue;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.Blue;
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.Teal;
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.Crimson;
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1291, 700);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1291, 727);
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
             // 
@@ -661,17 +667,14 @@ namespace AppTaller
             this.panelfechas.BorderRadius = 20;
             this.panelfechas.BottomSahddow = true;
             this.panelfechas.color = System.Drawing.Color.Aqua;
-            this.panelfechas.Controls.Add(this.btncancelar);
-            this.panelfechas.Controls.Add(this.Lblestado);
-            this.panelfechas.Controls.Add(this.label28);
-            this.panelfechas.Controls.Add(this.bunifuiOSSwitch1);
+            this.panelfechas.Controls.Add(this.panel5);
+            this.panelfechas.Controls.Add(this.panel4);
             this.panelfechas.Controls.Add(this.txtsaldo);
             this.panelfechas.Controls.Add(this.label19);
             this.panelfechas.Controls.Add(this.dtpentrada);
             this.panelfechas.Controls.Add(this.dtpfechaentrega);
             this.panelfechas.Controls.Add(this.label25);
             this.panelfechas.Controls.Add(this.cbotecnico);
-            this.panelfechas.Controls.Add(this.bunifuFlatButton5);
             this.panelfechas.Controls.Add(this.txttotal);
             this.panelfechas.Controls.Add(this.label24);
             this.panelfechas.Controls.Add(this.txtpagoadelantado);
@@ -684,9 +687,19 @@ namespace AppTaller
             this.panelfechas.Name = "panelfechas";
             this.panelfechas.RightSahddow = true;
             this.panelfechas.ShadowDepth = 20;
-            this.panelfechas.Size = new System.Drawing.Size(940, 146);
+            this.panelfechas.Size = new System.Drawing.Size(940, 182);
             this.panelfechas.TabIndex = 12;
             this.panelfechas.Paint += new System.Windows.Forms.PaintEventHandler(this.panelfechas_Paint);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.MintCream;
+            this.panel5.Controls.Add(this.btncancelar);
+            this.panel5.Controls.Add(this.bunifuFlatButton5);
+            this.panel5.Location = new System.Drawing.Point(364, 83);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(323, 75);
+            this.panel5.TabIndex = 48;
             // 
             // btncancelar
             // 
@@ -709,33 +722,91 @@ namespace AppTaller
             this.btncancelar.IconVisible = true;
             this.btncancelar.IconZoom = 90D;
             this.btncancelar.IsTab = false;
-            this.btncancelar.Location = new System.Drawing.Point(411, 52);
+            this.btncancelar.Location = new System.Drawing.Point(23, 10);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Normalcolor = System.Drawing.Color.Tomato;
             this.btncancelar.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
             this.btncancelar.OnHoverTextColor = System.Drawing.Color.White;
             this.btncancelar.selected = false;
             this.btncancelar.Size = new System.Drawing.Size(120, 54);
-            this.btncancelar.TabIndex = 46;
+            this.btncancelar.TabIndex = 48;
             this.btncancelar.Text = "Cancelar.";
             this.btncancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btncancelar.Textcolor = System.Drawing.Color.White;
             this.btncancelar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelar.Visible = false;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            // 
+            // bunifuFlatButton5
+            // 
+            this.bunifuFlatButton5.Activecolor = System.Drawing.Color.CornflowerBlue;
+            this.bunifuFlatButton5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuFlatButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton5.BorderRadius = 6;
+            this.bunifuFlatButton5.ButtonText = "Guardar .";
+            this.bunifuFlatButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton5.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bunifuFlatButton5.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton5.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton5.Iconimage")));
+            this.bunifuFlatButton5.Iconimage_right = null;
+            this.bunifuFlatButton5.Iconimage_right_Selected = null;
+            this.bunifuFlatButton5.Iconimage_Selected = null;
+            this.bunifuFlatButton5.IconMarginLeft = 5;
+            this.bunifuFlatButton5.IconMarginRight = 0;
+            this.bunifuFlatButton5.IconRightVisible = true;
+            this.bunifuFlatButton5.IconRightZoom = 0D;
+            this.bunifuFlatButton5.IconVisible = true;
+            this.bunifuFlatButton5.IconZoom = 90D;
+            this.bunifuFlatButton5.IsTab = false;
+            this.bunifuFlatButton5.Location = new System.Drawing.Point(149, 9);
+            this.bunifuFlatButton5.Name = "bunifuFlatButton5";
+            this.bunifuFlatButton5.Normalcolor = System.Drawing.Color.DeepSkyBlue;
+            this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.YellowGreen;
+            this.bunifuFlatButton5.OnHoverTextColor = System.Drawing.Color.Black;
+            this.bunifuFlatButton5.selected = false;
+            this.bunifuFlatButton5.Size = new System.Drawing.Size(154, 54);
+            this.bunifuFlatButton5.TabIndex = 47;
+            this.bunifuFlatButton5.Text = "Guardar .";
+            this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuFlatButton5.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton5.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton5.Visible = false;
+            this.bunifuFlatButton5.Click += new System.EventHandler(this.bunifuFlatButton5_Click_1);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.LavenderBlush;
+            this.panel4.Controls.Add(this.label39);
+            this.panel4.Controls.Add(this.Lblestado);
+            this.panel4.Controls.Add(this.label28);
+            this.panel4.Controls.Add(this.bunifuiOSSwitch1);
+            this.panel4.Location = new System.Drawing.Point(41, 83);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(300, 75);
+            this.panel4.TabIndex = 47;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(156, 44);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(47, 13);
+            this.label39.TabIndex = 51;
+            this.label39.Text = "Entregar";
+            this.label39.Visible = false;
             // 
             // Lblestado
             // 
             this.Lblestado.AutoSize = true;
             this.Lblestado.BackColor = System.Drawing.Color.LimeGreen;
+            this.Lblestado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Lblestado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblestado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Lblestado.Location = new System.Drawing.Point(273, 76);
+            this.Lblestado.Location = new System.Drawing.Point(151, 11);
             this.Lblestado.Name = "Lblestado";
-            this.Lblestado.Size = new System.Drawing.Size(120, 25);
-            this.Lblestado.TabIndex = 45;
+            this.Lblestado.Size = new System.Drawing.Size(122, 27);
+            this.Lblestado.TabIndex = 50;
             this.Lblestado.Text = "Entregado";
-            this.Lblestado.Click += new System.EventHandler(this.Lblestado_Click);
             // 
             // label28
             // 
@@ -743,10 +814,10 @@ namespace AppTaller
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label28.Location = new System.Drawing.Point(123, 76);
+            this.label28.Location = new System.Drawing.Point(5, 11);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(144, 25);
-            this.label28.TabIndex = 44;
+            this.label28.TabIndex = 49;
             this.label28.Text = "Este equipo ";
             // 
             // bunifuiOSSwitch1
@@ -755,14 +826,14 @@ namespace AppTaller
             this.bunifuiOSSwitch1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuiOSSwitch1.BackgroundImage")));
             this.bunifuiOSSwitch1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuiOSSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuiOSSwitch1.Location = new System.Drawing.Point(247, 108);
+            this.bunifuiOSSwitch1.Location = new System.Drawing.Point(115, 43);
             this.bunifuiOSSwitch1.Name = "bunifuiOSSwitch1";
             this.bunifuiOSSwitch1.OffColor = System.Drawing.Color.Gray;
             this.bunifuiOSSwitch1.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(202)))), ((int)(((byte)(94)))));
             this.bunifuiOSSwitch1.Size = new System.Drawing.Size(35, 20);
-            this.bunifuiOSSwitch1.TabIndex = 43;
+            this.bunifuiOSSwitch1.TabIndex = 48;
             this.bunifuiOSSwitch1.Value = false;
-            this.bunifuiOSSwitch1.OnValueChange += new System.EventHandler(this.bunifuiOSSwitch1_OnValueChange);
+            this.bunifuiOSSwitch1.OnValueChange += new System.EventHandler(this.bunifuiOSSwitch1_OnValueChange_1);
             // 
             // txtsaldo
             // 
@@ -832,43 +903,6 @@ namespace AppTaller
             this.cbotecnico.Size = new System.Drawing.Size(168, 21);
             this.cbotecnico.TabIndex = 31;
             // 
-            // bunifuFlatButton5
-            // 
-            this.bunifuFlatButton5.Activecolor = System.Drawing.Color.CornflowerBlue;
-            this.bunifuFlatButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.bunifuFlatButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton5.BorderRadius = 6;
-            this.bunifuFlatButton5.ButtonText = "Guardar .";
-            this.bunifuFlatButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton5.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bunifuFlatButton5.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton5.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton5.Iconimage")));
-            this.bunifuFlatButton5.Iconimage_right = null;
-            this.bunifuFlatButton5.Iconimage_right_Selected = null;
-            this.bunifuFlatButton5.Iconimage_Selected = null;
-            this.bunifuFlatButton5.IconMarginLeft = 5;
-            this.bunifuFlatButton5.IconMarginRight = 0;
-            this.bunifuFlatButton5.IconRightVisible = true;
-            this.bunifuFlatButton5.IconRightZoom = 0D;
-            this.bunifuFlatButton5.IconVisible = true;
-            this.bunifuFlatButton5.IconZoom = 90D;
-            this.bunifuFlatButton5.IsTab = false;
-            this.bunifuFlatButton5.Location = new System.Drawing.Point(537, 51);
-            this.bunifuFlatButton5.Name = "bunifuFlatButton5";
-            this.bunifuFlatButton5.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.YellowGreen;
-            this.bunifuFlatButton5.OnHoverTextColor = System.Drawing.Color.Black;
-            this.bunifuFlatButton5.selected = false;
-            this.bunifuFlatButton5.Size = new System.Drawing.Size(126, 54);
-            this.bunifuFlatButton5.TabIndex = 13;
-            this.bunifuFlatButton5.Text = "Guardar .";
-            this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton5.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton5.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton5.Visible = false;
-            this.bunifuFlatButton5.Click += new System.EventHandler(this.bunifuFlatButton5_Click);
-            // 
             // txttotal
             // 
             this.txttotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -917,6 +951,7 @@ namespace AppTaller
             this.txtpagoadelantado.Name = "txtpagoadelantado";
             this.txtpagoadelantado.Size = new System.Drawing.Size(105, 33);
             this.txtpagoadelantado.TabIndex = 32;
+            this.txtpagoadelantado.Text = "0.00";
             this.txtpagoadelantado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtpagoadelantado.OnValueChanged += new System.EventHandler(this.txtpagoadelantado_OnValueChanged);
             this.txtpagoadelantado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpagoadelantado_KeyDown);
@@ -993,9 +1028,9 @@ namespace AppTaller
             this.txtreparacion.HintForeColor = System.Drawing.Color.Empty;
             this.txtreparacion.HintText = "";
             this.txtreparacion.isPassword = false;
-            this.txtreparacion.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtreparacion.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtreparacion.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtreparacion.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtreparacion.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtreparacion.LineThickness = 3;
             this.txtreparacion.Location = new System.Drawing.Point(134, 83);
             this.txtreparacion.Margin = new System.Windows.Forms.Padding(4);
@@ -1024,9 +1059,9 @@ namespace AppTaller
             this.txtfalla.HintForeColor = System.Drawing.Color.Empty;
             this.txtfalla.HintText = "";
             this.txtfalla.isPassword = false;
-            this.txtfalla.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtfalla.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtfalla.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtfalla.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtfalla.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtfalla.LineThickness = 3;
             this.txtfalla.Location = new System.Drawing.Point(134, 42);
             this.txtfalla.Margin = new System.Windows.Forms.Padding(4);
@@ -1096,9 +1131,9 @@ namespace AppTaller
             this.txtobservaciones.HintForeColor = System.Drawing.Color.Empty;
             this.txtobservaciones.HintText = "";
             this.txtobservaciones.isPassword = false;
-            this.txtobservaciones.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtobservaciones.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtobservaciones.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtobservaciones.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtobservaciones.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtobservaciones.LineThickness = 3;
             this.txtobservaciones.Location = new System.Drawing.Point(119, 194);
             this.txtobservaciones.Margin = new System.Windows.Forms.Padding(4);
@@ -1128,9 +1163,9 @@ namespace AppTaller
             this.txtaccesorio.HintForeColor = System.Drawing.Color.Empty;
             this.txtaccesorio.HintText = "";
             this.txtaccesorio.isPassword = false;
-            this.txtaccesorio.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtaccesorio.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtaccesorio.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtaccesorio.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtaccesorio.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtaccesorio.LineThickness = 3;
             this.txtaccesorio.Location = new System.Drawing.Point(119, 153);
             this.txtaccesorio.Margin = new System.Windows.Forms.Padding(4);
@@ -1159,9 +1194,9 @@ namespace AppTaller
             this.txtclave.HintForeColor = System.Drawing.Color.Empty;
             this.txtclave.HintText = "";
             this.txtclave.isPassword = false;
-            this.txtclave.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtclave.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtclave.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtclave.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtclave.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtclave.LineThickness = 3;
             this.txtclave.Location = new System.Drawing.Point(330, 112);
             this.txtclave.Margin = new System.Windows.Forms.Padding(4);
@@ -1190,9 +1225,9 @@ namespace AppTaller
             this.txtserial.HintForeColor = System.Drawing.Color.Empty;
             this.txtserial.HintText = "";
             this.txtserial.isPassword = false;
-            this.txtserial.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtserial.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtserial.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtserial.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtserial.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtserial.LineThickness = 3;
             this.txtserial.Location = new System.Drawing.Point(119, 112);
             this.txtserial.Margin = new System.Windows.Forms.Padding(4);
@@ -1221,9 +1256,9 @@ namespace AppTaller
             this.txtmodelo.HintForeColor = System.Drawing.Color.Empty;
             this.txtmodelo.HintText = "";
             this.txtmodelo.isPassword = false;
-            this.txtmodelo.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtmodelo.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtmodelo.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtmodelo.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtmodelo.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtmodelo.LineThickness = 3;
             this.txtmodelo.Location = new System.Drawing.Point(330, 71);
             this.txtmodelo.Margin = new System.Windows.Forms.Padding(4);
@@ -1252,9 +1287,9 @@ namespace AppTaller
             this.txtmarca.HintForeColor = System.Drawing.Color.Empty;
             this.txtmarca.HintText = "";
             this.txtmarca.isPassword = false;
-            this.txtmarca.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtmarca.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtmarca.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtmarca.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtmarca.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtmarca.LineThickness = 3;
             this.txtmarca.Location = new System.Drawing.Point(119, 71);
             this.txtmarca.Margin = new System.Windows.Forms.Padding(4);
@@ -1283,9 +1318,9 @@ namespace AppTaller
             this.txtequipo.HintForeColor = System.Drawing.Color.Empty;
             this.txtequipo.HintText = "";
             this.txtequipo.isPassword = false;
-            this.txtequipo.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtequipo.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtequipo.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtequipo.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtequipo.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtequipo.LineThickness = 3;
             this.txtequipo.Location = new System.Drawing.Point(119, 38);
             this.txtequipo.Margin = new System.Windows.Forms.Padding(4);
@@ -1411,6 +1446,7 @@ namespace AppTaller
             this.cboclientes.Location = new System.Drawing.Point(135, 48);
             this.cboclientes.Name = "cboclientes";
             this.cboclientes.Size = new System.Drawing.Size(168, 21);
+            this.cboclientes.Sorted = true;
             this.cboclientes.TabIndex = 12;
             // 
             // label5
@@ -1433,9 +1469,9 @@ namespace AppTaller
             this.txtdocumento.HintForeColor = System.Drawing.Color.Empty;
             this.txtdocumento.HintText = "";
             this.txtdocumento.isPassword = false;
-            this.txtdocumento.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtdocumento.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtdocumento.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtdocumento.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtdocumento.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtdocumento.LineThickness = 3;
             this.txtdocumento.Location = new System.Drawing.Point(141, 201);
             this.txtdocumento.Margin = new System.Windows.Forms.Padding(4);
@@ -1464,9 +1500,9 @@ namespace AppTaller
             this.txttelefono.HintForeColor = System.Drawing.Color.Empty;
             this.txttelefono.HintText = "";
             this.txttelefono.isPassword = false;
-            this.txttelefono.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txttelefono.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txttelefono.LineIdleColor = System.Drawing.Color.Gray;
-            this.txttelefono.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txttelefono.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txttelefono.LineThickness = 3;
             this.txttelefono.Location = new System.Drawing.Point(134, 160);
             this.txttelefono.Margin = new System.Windows.Forms.Padding(4);
@@ -1495,9 +1531,9 @@ namespace AppTaller
             this.txtemail.HintForeColor = System.Drawing.Color.Empty;
             this.txtemail.HintText = "";
             this.txtemail.isPassword = false;
-            this.txtemail.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtemail.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtemail.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtemail.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtemail.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtemail.LineThickness = 3;
             this.txtemail.Location = new System.Drawing.Point(134, 119);
             this.txtemail.Margin = new System.Windows.Forms.Padding(4);
@@ -1526,9 +1562,9 @@ namespace AppTaller
             this.txtdireccion.HintForeColor = System.Drawing.Color.Empty;
             this.txtdireccion.HintText = "";
             this.txtdireccion.isPassword = false;
-            this.txtdireccion.LineFocusedColor = System.Drawing.Color.Blue;
+            this.txtdireccion.LineFocusedColor = System.Drawing.Color.DeepSkyBlue;
             this.txtdireccion.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtdireccion.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.txtdireccion.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtdireccion.LineThickness = 3;
             this.txtdireccion.Location = new System.Drawing.Point(141, 78);
             this.txtdireccion.Margin = new System.Windows.Forms.Padding(4);
@@ -1683,7 +1719,8 @@ namespace AppTaller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1291, 700);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(1291, 727);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
@@ -1699,6 +1736,9 @@ namespace AppTaller
             this.bunifuCards1.PerformLayout();
             this.panelfechas.ResumeLayout(false);
             this.panelfechas.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.bunifuCards3.ResumeLayout(false);
             this.bunifuCards3.PerformLayout();
             this.panelequipo.ResumeLayout(false);
@@ -1757,7 +1797,6 @@ namespace AppTaller
         private System.Windows.Forms.Label label24;
         private Bunifu.Framework.UI.BunifuMetroTextbox txtpagoadelantado;
         private System.Windows.Forms.Label label23;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton5;
         private System.Windows.Forms.Label lblfecha;
         private Bunifu.Framework.UI.BunifuTextbox txtorden;
         private System.Windows.Forms.Timer timer1;
@@ -1771,16 +1810,12 @@ namespace AppTaller
         private System.Windows.Forms.DateTimePicker dtpentrada;
         private Bunifu.Framework.UI.BunifuMetroTextbox txtsaldo;
         private System.Windows.Forms.Label label19;
-        private Bunifu.Framework.UI.BunifuiOSSwitch bunifuiOSSwitch1;
-        private System.Windows.Forms.Label Lblestado;
-        private System.Windows.Forms.Label label28;
         private Bunifu.Framework.UI.BunifuThinButton2 btnnuevo;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton6;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton7;
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuFlatButton btncancelar;
         private System.Windows.Forms.Label lbhora;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label32;
@@ -1802,6 +1837,14 @@ namespace AppTaller
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton10;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton11;
+        private System.Windows.Forms.Panel panel5;
+        private Bunifu.Framework.UI.BunifuFlatButton btncancelar;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label Lblestado;
+        private System.Windows.Forms.Label label28;
+        private Bunifu.Framework.UI.BunifuiOSSwitch bunifuiOSSwitch1;
     }
 }
 

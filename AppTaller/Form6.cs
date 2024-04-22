@@ -503,6 +503,11 @@ namespace AppTaller
             }
         }
 
+        private void txtcodigo_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
 
