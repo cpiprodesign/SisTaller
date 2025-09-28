@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
-      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
-    </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\Desktop\Design Dashboard Modern\BUNIFU UI\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
@@ -86,6 +83,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -156,6 +154,12 @@
     <Compile Include="Frmempresa.Designer.cs">
       <DependentUpon>Frmempresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frmgrafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmgrafico.Designer.cs">
+      <DependentUpon>Frmgrafico.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMarca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frmempresa.resx">
       <DependentUpon>Frmempresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmgrafico.resx">
+      <DependentUpon>Frmgrafico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMarca.resx">
       <DependentUpon>FrmMarca.cs</DependentUpon>

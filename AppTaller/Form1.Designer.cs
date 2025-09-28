@@ -31,19 +31,24 @@ namespace AppTaller
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.bunifuFlatButton11 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton10 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton9 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bunifuFlatButton8 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
@@ -61,6 +66,9 @@ namespace AppTaller
             this.lblfecha = new System.Windows.Forms.Label();
             this.txtorden = new Bunifu.Framework.UI.BunifuTextbox();
             this.panelfechas = new Bunifu.Framework.UI.BunifuCards();
+            this.lblvuelto = new System.Windows.Forms.Label();
+            this.txtpagarcon = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.label40 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btncancelar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton5 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -104,7 +112,6 @@ namespace AppTaller
             this.txtequipo = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panelclientes = new Bunifu.Framework.UI.BunifuCards();
@@ -124,8 +131,8 @@ namespace AppTaller
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.bunifuCards2.SuspendLayout();
             this.bunifuCards1.SuspendLayout();
             this.panelfechas.SuspendLayout();
@@ -151,6 +158,11 @@ namespace AppTaller
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // bunifuGradientPanel1
             // 
             this.bunifuGradientPanel1.AutoScroll = true;
@@ -160,6 +172,7 @@ namespace AppTaller
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton10);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton2);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton9);
+            this.bunifuGradientPanel1.Controls.Add(this.chart2);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuFlatButton8);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuCards2);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuCards1);
@@ -187,12 +200,12 @@ namespace AppTaller
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Blue;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.Blue;
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.Teal;
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.Crimson;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.MediumBlue;
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1291, 727);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1370, 747);
             this.bunifuGradientPanel1.TabIndex = 0;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
             // 
@@ -218,7 +231,7 @@ namespace AppTaller
             this.bunifuFlatButton11.IconVisible = true;
             this.bunifuFlatButton11.IconZoom = 90D;
             this.bunifuFlatButton11.IsTab = false;
-            this.bunifuFlatButton11.Location = new System.Drawing.Point(1063, 93);
+            this.bunifuFlatButton11.Location = new System.Drawing.Point(1104, 89);
             this.bunifuFlatButton11.Name = "bunifuFlatButton11";
             this.bunifuFlatButton11.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bunifuFlatButton11.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
@@ -336,6 +349,43 @@ namespace AppTaller
             this.bunifuFlatButton9.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton9.Click += new System.EventHandler(this.bunifuFlatButton9_Click);
             // 
+            // chart2
+            // 
+            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart2.BackColor = System.Drawing.Color.Transparent;
+            this.chart2.BorderlineWidth = 4;
+            chartArea2.AxisX.IsLabelAutoFit = false;
+            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            this.chart2.Location = new System.Drawing.Point(962, 271);
+            this.chart2.Name = "chart2";
+            series2.BorderWidth = 5;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Crimson;
+            series2.LabelBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series2.LabelBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series2.Name = "ChartLinea";
+            series2.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.chart2.Series.Add(series2);
+            this.chart2.Size = new System.Drawing.Size(396, 295);
+            this.chart2.TabIndex = 50;
+            this.chart2.Text = "chart2";
+            // 
             // bunifuFlatButton8
             // 
             this.bunifuFlatButton8.Activecolor = System.Drawing.Color.CornflowerBlue;
@@ -380,14 +430,16 @@ namespace AppTaller
             this.bunifuCards2.Controls.Add(this.label37);
             this.bunifuCards2.Controls.Add(this.label36);
             this.bunifuCards2.Controls.Add(this.label38);
+            this.bunifuCards2.Controls.Add(this.panel1);
             this.bunifuCards2.LeftSahddow = false;
-            this.bunifuCards2.Location = new System.Drawing.Point(996, 262);
+            this.bunifuCards2.Location = new System.Drawing.Point(996, 274);
             this.bunifuCards2.Name = "bunifuCards2";
             this.bunifuCards2.RightSahddow = true;
             this.bunifuCards2.ShadowDepth = 20;
             this.bunifuCards2.Size = new System.Drawing.Size(192, 111);
             this.bunifuCards2.TabIndex = 44;
             this.bunifuCards2.Visible = false;
+            this.bunifuCards2.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuCards2_Paint);
             // 
             // label37
             // 
@@ -425,6 +477,13 @@ namespace AppTaller
             this.label38.TabIndex = 41;
             this.label38.Text = "Servicios hoy.";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(79, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(102, 67);
+            this.panel1.TabIndex = 36;
+            // 
             // bunifuCards1
             // 
             this.bunifuCards1.BackColor = System.Drawing.Color.Crimson;
@@ -435,12 +494,14 @@ namespace AppTaller
             this.bunifuCards1.Controls.Add(this.label34);
             this.bunifuCards1.Controls.Add(this.label33);
             this.bunifuCards1.LeftSahddow = false;
-            this.bunifuCards1.Location = new System.Drawing.Point(996, 149);
+            this.bunifuCards1.Location = new System.Drawing.Point(1042, 139);
             this.bunifuCards1.Name = "bunifuCards1";
             this.bunifuCards1.RightSahddow = true;
             this.bunifuCards1.ShadowDepth = 20;
             this.bunifuCards1.Size = new System.Drawing.Size(192, 111);
             this.bunifuCards1.TabIndex = 40;
+            this.bunifuCards1.Click += new System.EventHandler(this.bunifuCards1_Click);
+            this.bunifuCards1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuCards1_Paint_1);
             // 
             // label35
             // 
@@ -484,20 +545,22 @@ namespace AppTaller
             this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label32.Location = new System.Drawing.Point(1060, 656);
+            this.label32.Location = new System.Drawing.Point(1060, 683);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(89, 17);
             this.label32.TabIndex = 39;
             this.label32.Text = "cpiprodesign";
+            this.label32.Visible = false;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.Location = new System.Drawing.Point(1006, 640);
+            this.panel3.Location = new System.Drawing.Point(1006, 667);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(48, 51);
             this.panel3.TabIndex = 38;
+            this.panel3.Visible = false;
             // 
             // label31
             // 
@@ -505,20 +568,22 @@ namespace AppTaller
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label31.Location = new System.Drawing.Point(1060, 598);
+            this.label31.Location = new System.Drawing.Point(1060, 625);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(104, 17);
             this.label31.TabIndex = 38;
             this.label31.Text = "+51935667172";
+            this.label31.Visible = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.Location = new System.Drawing.Point(1006, 583);
+            this.panel2.Location = new System.Drawing.Point(1006, 610);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(48, 51);
             this.panel2.TabIndex = 37;
+            this.panel2.Visible = false;
             // 
             // label29
             // 
@@ -526,11 +591,12 @@ namespace AppTaller
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label29.Location = new System.Drawing.Point(1024, 551);
+            this.label29.Location = new System.Drawing.Point(1024, 578);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(125, 20);
             this.label29.TabIndex = 36;
             this.label29.Text = "Soporte tecnico:";
+            this.label29.Visible = false;
             // 
             // lbhora
             // 
@@ -628,9 +694,11 @@ namespace AppTaller
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(188, 95);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 20);
+            this.textBox1.Size = new System.Drawing.Size(124, 26);
             this.textBox1.TabIndex = 27;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
@@ -656,7 +724,7 @@ namespace AppTaller
             this.txtorden.Icon = ((System.Drawing.Image)(resources.GetObject("txtorden.Icon")));
             this.txtorden.Location = new System.Drawing.Point(185, 93);
             this.txtorden.Name = "txtorden";
-            this.txtorden.Size = new System.Drawing.Size(129, 24);
+            this.txtorden.Size = new System.Drawing.Size(129, 30);
             this.txtorden.TabIndex = 23;
             this.txtorden.text = "";
             this.txtorden.OnTextChange += new System.EventHandler(this.txtorden_OnTextChange);
@@ -667,6 +735,9 @@ namespace AppTaller
             this.panelfechas.BorderRadius = 20;
             this.panelfechas.BottomSahddow = true;
             this.panelfechas.color = System.Drawing.Color.Aqua;
+            this.panelfechas.Controls.Add(this.lblvuelto);
+            this.panelfechas.Controls.Add(this.txtpagarcon);
+            this.panelfechas.Controls.Add(this.label40);
             this.panelfechas.Controls.Add(this.panel5);
             this.panelfechas.Controls.Add(this.panel4);
             this.panelfechas.Controls.Add(this.txtsaldo);
@@ -687,18 +758,62 @@ namespace AppTaller
             this.panelfechas.Name = "panelfechas";
             this.panelfechas.RightSahddow = true;
             this.panelfechas.ShadowDepth = 20;
-            this.panelfechas.Size = new System.Drawing.Size(940, 182);
+            this.panelfechas.Size = new System.Drawing.Size(912, 202);
             this.panelfechas.TabIndex = 12;
             this.panelfechas.Paint += new System.Windows.Forms.PaintEventHandler(this.panelfechas_Paint);
+            // 
+            // lblvuelto
+            // 
+            this.lblvuelto.AutoSize = true;
+            this.lblvuelto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblvuelto.ForeColor = System.Drawing.Color.DeepPink;
+            this.lblvuelto.Location = new System.Drawing.Point(648, 172);
+            this.lblvuelto.Name = "lblvuelto";
+            this.lblvuelto.Size = new System.Drawing.Size(158, 20);
+            this.lblvuelto.TabIndex = 51;
+            this.lblvuelto.Text = "Su vuelto es :    ....";
+            // 
+            // txtpagarcon
+            // 
+            this.txtpagarcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.txtpagarcon.BorderColorFocused = System.Drawing.Color.Blue;
+            this.txtpagarcon.BorderColorIdle = System.Drawing.Color.Transparent;
+            this.txtpagarcon.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.txtpagarcon.BorderThickness = 3;
+            this.txtpagarcon.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtpagarcon.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpagarcon.ForeColor = System.Drawing.Color.White;
+            this.txtpagarcon.isPassword = false;
+            this.txtpagarcon.Location = new System.Drawing.Point(785, 132);
+            this.txtpagarcon.Margin = new System.Windows.Forms.Padding(4);
+            this.txtpagarcon.Name = "txtpagarcon";
+            this.txtpagarcon.Size = new System.Drawing.Size(105, 31);
+            this.txtpagarcon.TabIndex = 49;
+            this.txtpagarcon.Text = "0";
+            this.txtpagarcon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtpagarcon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpagarcon_KeyDown);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.Transparent;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label40.Location = new System.Drawing.Point(693, 138);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(80, 18);
+            this.label40.TabIndex = 50;
+            this.label40.Text = "Pagar con:";
+            this.label40.Click += new System.EventHandler(this.label40_Click);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.MintCream;
             this.panel5.Controls.Add(this.btncancelar);
             this.panel5.Controls.Add(this.bunifuFlatButton5);
-            this.panel5.Location = new System.Drawing.Point(364, 83);
+            this.panel5.Location = new System.Drawing.Point(310, 83);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(323, 75);
+            this.panel5.Size = new System.Drawing.Size(294, 75);
             this.panel5.TabIndex = 48;
             // 
             // btncancelar
@@ -722,7 +837,7 @@ namespace AppTaller
             this.btncancelar.IconVisible = true;
             this.btncancelar.IconZoom = 90D;
             this.btncancelar.IsTab = false;
-            this.btncancelar.Location = new System.Drawing.Point(23, 10);
+            this.btncancelar.Location = new System.Drawing.Point(8, 10);
             this.btncancelar.Name = "btncancelar";
             this.btncancelar.Normalcolor = System.Drawing.Color.Tomato;
             this.btncancelar.OnHovercolor = System.Drawing.Color.DeepSkyBlue;
@@ -758,7 +873,7 @@ namespace AppTaller
             this.bunifuFlatButton5.IconVisible = true;
             this.bunifuFlatButton5.IconZoom = 90D;
             this.bunifuFlatButton5.IsTab = false;
-            this.bunifuFlatButton5.Location = new System.Drawing.Point(149, 9);
+            this.bunifuFlatButton5.Location = new System.Drawing.Point(132, 9);
             this.bunifuFlatButton5.Name = "bunifuFlatButton5";
             this.bunifuFlatButton5.Normalcolor = System.Drawing.Color.DeepSkyBlue;
             this.bunifuFlatButton5.OnHovercolor = System.Drawing.Color.YellowGreen;
@@ -780,7 +895,7 @@ namespace AppTaller
             this.panel4.Controls.Add(this.Lblestado);
             this.panel4.Controls.Add(this.label28);
             this.panel4.Controls.Add(this.bunifuiOSSwitch1);
-            this.panel4.Location = new System.Drawing.Point(41, 83);
+            this.panel4.Location = new System.Drawing.Point(6, 83);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(300, 75);
             this.panel4.TabIndex = 47;
@@ -847,7 +962,7 @@ namespace AppTaller
             this.txtsaldo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txtsaldo.isPassword = false;
-            this.txtsaldo.Location = new System.Drawing.Point(828, 60);
+            this.txtsaldo.Location = new System.Drawing.Point(785, 55);
             this.txtsaldo.Margin = new System.Windows.Forms.Padding(4);
             this.txtsaldo.Name = "txtsaldo";
             this.txtsaldo.Size = new System.Drawing.Size(105, 31);
@@ -859,11 +974,11 @@ namespace AppTaller
             // 
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(776, 71);
+            this.label19.Location = new System.Drawing.Point(733, 66);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(54, 20);
+            this.label19.Size = new System.Drawing.Size(50, 18);
             this.label19.TabIndex = 42;
             this.label19.Text = "Saldo:";
             // 
@@ -914,7 +1029,7 @@ namespace AppTaller
             this.txttotal.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotal.ForeColor = System.Drawing.Color.White;
             this.txttotal.isPassword = false;
-            this.txttotal.Location = new System.Drawing.Point(828, 98);
+            this.txttotal.Location = new System.Drawing.Point(785, 93);
             this.txttotal.Margin = new System.Windows.Forms.Padding(4);
             this.txttotal.Name = "txttotal";
             this.txttotal.Size = new System.Drawing.Size(105, 31);
@@ -927,13 +1042,13 @@ namespace AppTaller
             // 
             this.label24.AutoSize = true;
             this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(776, 109);
+            this.label24.Location = new System.Drawing.Point(609, 104);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(48, 20);
+            this.label24.Size = new System.Drawing.Size(178, 18);
             this.label24.TabIndex = 35;
-            this.label24.Text = "Total:";
+            this.label24.Text = "Total pago por el servicio:";
             // 
             // txtpagoadelantado
             // 
@@ -946,7 +1061,7 @@ namespace AppTaller
             this.txtpagoadelantado.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpagoadelantado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txtpagoadelantado.isPassword = false;
-            this.txtpagoadelantado.Location = new System.Drawing.Point(828, 22);
+            this.txtpagoadelantado.Location = new System.Drawing.Point(785, 17);
             this.txtpagoadelantado.Margin = new System.Windows.Forms.Padding(5);
             this.txtpagoadelantado.Name = "txtpagoadelantado";
             this.txtpagoadelantado.Size = new System.Drawing.Size(105, 33);
@@ -960,11 +1075,11 @@ namespace AppTaller
             // 
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(688, 31);
+            this.label23.Location = new System.Drawing.Point(645, 26);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(136, 20);
+            this.label23.Size = new System.Drawing.Size(124, 18);
             this.label23.TabIndex = 33;
             this.label23.Text = "Pago Adelantado:";
             // 
@@ -1017,7 +1132,7 @@ namespace AppTaller
             this.bunifuCards3.Name = "bunifuCards3";
             this.bunifuCards3.RightSahddow = true;
             this.bunifuCards3.ShadowDepth = 20;
-            this.bunifuCards3.Size = new System.Drawing.Size(940, 131);
+            this.bunifuCards3.Size = new System.Drawing.Size(912, 131);
             this.bunifuCards3.TabIndex = 11;
             // 
             // txtreparacion
@@ -1035,7 +1150,7 @@ namespace AppTaller
             this.txtreparacion.Location = new System.Drawing.Point(134, 83);
             this.txtreparacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtreparacion.Name = "txtreparacion";
-            this.txtreparacion.Size = new System.Drawing.Size(750, 33);
+            this.txtreparacion.Size = new System.Drawing.Size(715, 33);
             this.txtreparacion.TabIndex = 28;
             this.txtreparacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -1066,7 +1181,7 @@ namespace AppTaller
             this.txtfalla.Location = new System.Drawing.Point(134, 42);
             this.txtfalla.Margin = new System.Windows.Forms.Padding(4);
             this.txtfalla.Name = "txtfalla";
-            this.txtfalla.Size = new System.Drawing.Size(750, 33);
+            this.txtfalla.Size = new System.Drawing.Size(715, 33);
             this.txtfalla.TabIndex = 24;
             this.txtfalla.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -1086,7 +1201,7 @@ namespace AppTaller
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label17.ForeColor = System.Drawing.Color.Blue;
             this.label17.Location = new System.Drawing.Point(190, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(257, 18);
@@ -1114,13 +1229,12 @@ namespace AppTaller
             this.panelequipo.Controls.Add(this.txtequipo);
             this.panelequipo.Controls.Add(this.label10);
             this.panelequipo.Controls.Add(this.label2);
-            this.panelequipo.Controls.Add(this.panel1);
             this.panelequipo.LeftSahddow = false;
             this.panelequipo.Location = new System.Drawing.Point(513, 139);
             this.panelequipo.Name = "panelequipo";
             this.panelequipo.RightSahddow = true;
             this.panelequipo.ShadowDepth = 20;
-            this.panelequipo.Size = new System.Drawing.Size(471, 249);
+            this.panelequipo.Size = new System.Drawing.Size(443, 249);
             this.panelequipo.TabIndex = 6;
             // 
             // txtobservaciones
@@ -1138,7 +1252,7 @@ namespace AppTaller
             this.txtobservaciones.Location = new System.Drawing.Point(119, 194);
             this.txtobservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.txtobservaciones.Name = "txtobservaciones";
-            this.txtobservaciones.Size = new System.Drawing.Size(329, 33);
+            this.txtobservaciones.Size = new System.Drawing.Size(304, 33);
             this.txtobservaciones.TabIndex = 35;
             this.txtobservaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -1170,7 +1284,7 @@ namespace AppTaller
             this.txtaccesorio.Location = new System.Drawing.Point(119, 153);
             this.txtaccesorio.Margin = new System.Windows.Forms.Padding(4);
             this.txtaccesorio.Name = "txtaccesorio";
-            this.txtaccesorio.Size = new System.Drawing.Size(329, 33);
+            this.txtaccesorio.Size = new System.Drawing.Size(304, 33);
             this.txtaccesorio.TabIndex = 33;
             this.txtaccesorio.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -1198,12 +1312,13 @@ namespace AppTaller
             this.txtclave.LineIdleColor = System.Drawing.Color.Gray;
             this.txtclave.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtclave.LineThickness = 3;
-            this.txtclave.Location = new System.Drawing.Point(330, 112);
+            this.txtclave.Location = new System.Drawing.Point(305, 112);
             this.txtclave.Margin = new System.Windows.Forms.Padding(4);
             this.txtclave.Name = "txtclave";
             this.txtclave.Size = new System.Drawing.Size(118, 33);
             this.txtclave.TabIndex = 31;
             this.txtclave.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtclave.Visible = false;
             // 
             // label14
             // 
@@ -1211,11 +1326,12 @@ namespace AppTaller
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(249, 125);
+            this.label14.Location = new System.Drawing.Point(239, 125);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(52, 20);
             this.label14.TabIndex = 30;
             this.label14.Text = "Clave:";
+            this.label14.Visible = false;
             // 
             // txtserial
             // 
@@ -1260,7 +1376,7 @@ namespace AppTaller
             this.txtmodelo.LineIdleColor = System.Drawing.Color.Gray;
             this.txtmodelo.LineMouseHoverColor = System.Drawing.Color.DeepSkyBlue;
             this.txtmodelo.LineThickness = 3;
-            this.txtmodelo.Location = new System.Drawing.Point(330, 71);
+            this.txtmodelo.Location = new System.Drawing.Point(305, 71);
             this.txtmodelo.Margin = new System.Windows.Forms.Padding(4);
             this.txtmodelo.Name = "txtmodelo";
             this.txtmodelo.Size = new System.Drawing.Size(118, 33);
@@ -1273,7 +1389,7 @@ namespace AppTaller
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(249, 84);
+            this.label12.Location = new System.Drawing.Point(238, 84);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 20);
             this.label12.TabIndex = 26;
@@ -1347,20 +1463,12 @@ namespace AppTaller
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(170, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "DATOS DEL EQUIPO";
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(186, 38);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(229, 186);
-            this.panel1.TabIndex = 30;
-            this.panel1.Visible = false;
             // 
             // label4
             // 
@@ -1446,7 +1554,6 @@ namespace AppTaller
             this.cboclientes.Location = new System.Drawing.Point(135, 48);
             this.cboclientes.Name = "cboclientes";
             this.cboclientes.Size = new System.Drawing.Size(168, 21);
-            this.cboclientes.Sorted = true;
             this.cboclientes.TabIndex = 12;
             // 
             // label5
@@ -1589,7 +1696,7 @@ namespace AppTaller
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(153, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 18);
@@ -1710,17 +1817,12 @@ namespace AppTaller
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
-            // timer2
-            // 
-            this.timer2.Enabled = true;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1291, 727);
+            this.ClientSize = new System.Drawing.Size(1370, 747);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
@@ -1730,6 +1832,7 @@ namespace AppTaller
             this.Load += new System.EventHandler(this.Form1_Load);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.bunifuCards2.ResumeLayout(false);
             this.bunifuCards2.PerformLayout();
             this.bunifuCards1.ResumeLayout(false);
@@ -1815,7 +1918,6 @@ namespace AppTaller
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton7;
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbhora;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label32;
@@ -1845,6 +1947,11 @@ namespace AppTaller
         private System.Windows.Forms.Label Lblestado;
         private System.Windows.Forms.Label label28;
         private Bunifu.Framework.UI.BunifuiOSSwitch bunifuiOSSwitch1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox txtpagarcon;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label lblvuelto;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

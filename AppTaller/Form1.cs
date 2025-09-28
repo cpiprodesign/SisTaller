@@ -14,6 +14,7 @@ using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Data.SqlClient;
 
 namespace AppTaller
 {
@@ -58,6 +59,35 @@ namespace AppTaller
         {
 
         }
+        private void grafico()
+        {
+            MySqlDataAdapter da = new MySqlDataAdapter("ordenesPorMeses", cn.ObtenerConeccion());
+            DataTable dt = new DataTable();
+            DataRow dr;
+            dt.Clear();
+            da.Fill(dt);
+            //this.Grafico.Palette = ChartColorPalette.Chocolate;
+
+            string mes;
+            int total;
+
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    dr = dt.Rows[i];
+
+                    mes = dr.ItemArray[0].ToString();
+                    total = Convert.ToInt32(dr.ItemArray[1]);
+
+                    this.chart2.Series["ChartLinea"].Points.AddXY(mes, total);
+
+
+                }
+
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -69,6 +99,7 @@ namespace AppTaller
             estados();
             getEmpresa();
             getlistarOrdenes();
+            grafico();
            
            
         }
@@ -239,6 +270,7 @@ namespace AppTaller
             txtpagoadelantado.Text = "0.00";
             txtsaldo.Text = "0.00";
             txttotal.Text = "0.00";
+            txtpagarcon.Text = "0.00";
             cboclientes.Focus();
         }
         private void filtro()
@@ -292,7 +324,7 @@ namespace AppTaller
                             estado = "Entregado";
                             Lblestado.Text = estado;
                             bunifuiOSSwitch1.Visible = false;
-
+                            label39.Visible = false;
                         }
                     }
                 }
@@ -467,7 +499,12 @@ namespace AppTaller
                 cmd.Parameters.Add("@Reparacion", MySqlDbType.VarChar, 200).Value = txtreparacion.Text;
                 cmd.Parameters.Add("@FechaEntrada", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpentrada.Text);
                 cmd.Parameters.Add("@FechaEntrega", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpfechaentrega.Text);
-                cmd.Parameters.Add("@PagoAdelantado", MySqlDbType.Decimal).Value = txtpagoadelantado.Text;
+                string pagoadelantado = txtpagoadelantado.Text;
+                if (pagoadelantado == "")
+                {
+                    pagoadelantado = "0.00";
+                }
+                cmd.Parameters.Add("@PagoAdelantado", MySqlDbType.Decimal).Value = Convert.ToDecimal(pagoadelantado);
                 cmd.Parameters.Add("@TotalPagar", MySqlDbType.Decimal).Value = txttotal.Text;
                 cmd.Parameters.Add("@Estado", MySqlDbType.VarChar, 50).Value = "No entregado";
                 cmd.Parameters.Add("@IdEmpleado", MySqlDbType.Int64).Value = label26.Text;
@@ -505,7 +542,12 @@ namespace AppTaller
                     cmd.Parameters.Add("@Reparacion", MySqlDbType.VarChar, 200).Value = txtreparacion.Text;
                     cmd.Parameters.Add("@FechaEntrada", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpentrada.Text);
                     cmd.Parameters.Add("@FechaEntrega", MySqlDbType.DateTime).Value = Convert.ToDateTime(dtpfechaentrega.Text);
-                    cmd.Parameters.Add("@PagoAdelantado", MySqlDbType.Decimal).Value = txtpagoadelantado.Text;
+                    string pagoadelantado=txtpagoadelantado.Text;
+                if (pagoadelantado=="")
+                {
+                   pagoadelantado= "0.00";
+                }
+                cmd.Parameters.Add("@PagoAdelantado", MySqlDbType.Decimal).Value = Convert.ToDecimal(pagoadelantado);
                     cmd.Parameters.Add("@TotalPagar", MySqlDbType.Decimal).Value = txttotal.Text;
                     cmd.Parameters.Add("@Estado", MySqlDbType.VarChar, 50).Value = estado;
                     cmd.Parameters.Add("@IdEmpleado", MySqlDbType.Int64).Value = label26.Text;
@@ -557,6 +599,7 @@ namespace AppTaller
             if (e.KeyCode == Keys.Enter)
             {
                 totalizar();
+                calcularVuelto();
             }
         }
 
@@ -701,9 +744,9 @@ namespace AppTaller
             //e.Graphics.DrawString("Total por servicio: " + txttotal.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 220));
 
             //e.Graphics.DrawString("Saldo : " + txtsaldo.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 210));
-            e.Graphics.DrawString("Total por servicio: " + txttotal.Text + " Gs. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 200));
-            e.Graphics.DrawString("Pago adelantado: " + txtpagoadelantado.Text + " Gs. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 210));
-            e.Graphics.DrawString("Pendiente : "  + txtsaldo.Text + " Gs. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 220));
+            e.Graphics.DrawString("Total por servicio: " + txttotal.Text + " $. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 200));
+            //e.Graphics.DrawString("Pago adelantado: " + txtpagoadelantado.Text + " €. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 210));
+           // e.Graphics.DrawString("Pendiente : "  + txtsaldo.Text + " €. ", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 220));
 
 
             e.Graphics.DrawImage(image, 80, 240, image.Width, image.Height);
@@ -768,11 +811,11 @@ namespace AppTaller
                 generarQr();
                 //printDocument.Print();
                 PrintDocument pd = new PrintDocument();
-                PaperSize ps = new PaperSize("Boleta", 200, 400);
+                //PaperSize ps = new PaperSize("Boleta", 200, 400);
                 //medida para ticketera 80
-                 //PaperSize ps = new PaperSize("Boleta", 300, 420);
+                 PaperSize ps = new PaperSize("Boleta", 300, 420);
 
-                pd.PrintPage += new PrintPageEventHandler(printDocument_PrintPagePequeño);
+                pd.PrintPage += new PrintPageEventHandler(printDocument_PrintPagePequeñoGrande);
 
                 pd.PrintController = new StandardPrintController();
                 pd.DefaultPageSettings.Margins.Left = 0;
@@ -890,16 +933,16 @@ namespace AppTaller
                     MessageBox.Show("Debes ingresar Total", "Sistema");
                     txttotal.Focus();
                 }
-                else if (txtpagoadelantado.Text == "0.00")
-                {
-                    MessageBox.Show("Debes ingresar pago adelantado", "Sistema");
-                    txtpagoadelantado.Focus();
-                }
-                else if ((Convert.ToDecimal(txtpagoadelantado.Text)) > (Convert.ToDecimal(txttotal.Text)))
-                {
-                    MessageBox.Show("El pago adelantado no debe ser mayor al pago total", "Sistema");
-                    txtpagoadelantado.Focus();
-                }
+                //else if (txtpagoadelantado.Text == "0.00")
+                //{
+                //    MessageBox.Show("Debes ingresar pago adelantado", "Sistema");
+                //    txtpagoadelantado.Focus();
+                //}
+                //else if ((Convert.ToDecimal(txtpagoadelantado.Text)) > (Convert.ToDecimal(txttotal.Text)))
+                //{
+                //    MessageBox.Show("El pago adelantado no debe ser mayor al pago total", "Sistema");
+                //    txtpagoadelantado.Focus();
+                //}
 
                 else
                 {
@@ -918,37 +961,108 @@ namespace AppTaller
             }
             else
             {
-                if (txtpagoadelantado.Text != txttotal.Text)
+                Actualizar();
+                DialogResult dialogResult = MessageBox.Show("Deseas Imprimir el Comprobante pagado?", "Sistema", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Recuerda actualizar el pago por el servicio", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtpagoadelantado.Text = "";
-                    txtpagoadelantado.Focus();
+                    impri();
+                    //para imprimir dos veves
 
                 }
-                else
-                {
+                limpiar();
+                desabilitar();
 
-                    Actualizar();
-                    DialogResult dialogResult = MessageBox.Show("Deseas Imprimir el Comprobante pagado?", "Sistema", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        impri();
-                        //para imprimir dos veves
+                //if (txtpagoadelantado.Text != txttotal.Text)
+                //{
+                //    MessageBox.Show("Recuerda actualizar el pago por el servicio", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    txtpagoadelantado.Text = "";
+                //    txtpagoadelantado.Focus();
 
-                    }
-                    limpiar();
-                    desabilitar();
-                }
-                
-                
-               
-                
+                //}
+                //else
+                //{
+
+                //    Actualizar();
+                //    DialogResult dialogResult = MessageBox.Show("Deseas Imprimir el Comprobante pagado?", "Sistema", MessageBoxButtons.YesNo);
+                //    if (dialogResult == DialogResult.Yes)
+                //    {
+                //        impri();
+                //        //para imprimir dos veves
+
+                //    }
+                //    limpiar();
+                //    desabilitar();
+                //}
+
+
+
+
             }
         }
 
         private void bunifuiOSSwitch1_OnValueChange_1(object sender, EventArgs e)
         {
             estados();
+        }
+
+        private void label40_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+           
+        }
+        private void calcularVuelto()
+        {
+            decimal totalvuelt=0,pagarcon=0,total=0;
+            pagarcon=Convert.ToDecimal(txtpagarcon.Text);
+            total = Convert.ToDecimal(txttotal.Text);
+            totalvuelt = pagarcon - total;
+            lblvuelto.Text = $"Su vuelto es : {totalvuelt}";
+        }
+
+        private void txtpagarcon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtpagarcon.Text.Length > 0) {
+                    calcularVuelto();
+                }
+                else
+                {
+                    MessageBox.Show("deberia ingresar el billete a pagar", "Sistema");
+                }
+              
+            }
+        }
+
+        private void bunifuCards2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            grafico();
+        }
+
+        private void button1_Click_4(object sender, EventArgs e)
+        {
+            Frmgrafico frmgrafico = new Frmgrafico();
+            frmgrafico.ShowDialog();
+        }
+
+        private void bunifuCards1_Paint_1(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void bunifuCards1_Click(object sender, EventArgs e)
+        {
+            Frmgrafico frn = new Frmgrafico();
+            frn.ShowDialog();
         }
 
         private void Lblestado_Click(object sender, EventArgs e)
