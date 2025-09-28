@@ -45,3 +45,4 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.exe
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.pdb
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.csproj.Up2Date
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.Frmgrafico.resources
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Debug\AppTaller.exe.config
