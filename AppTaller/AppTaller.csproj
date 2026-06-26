@@ -142,6 +142,12 @@
     <Compile Include="FrmAddClienteVenta.Designer.cs">
       <DependentUpon>FrmAddClienteVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmbuscarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmbuscarClientes.Designer.cs">
+      <DependentUpon>FrmbuscarClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCategoriacs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddClienteVenta.resx">
       <DependentUpon>FrmAddClienteVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmbuscarClientes.resx">
+      <DependentUpon>FrmbuscarClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCategoriacs.resx">
       <DependentUpon>FrmCategoriacs.cs</DependentUpon>

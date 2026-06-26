@@ -1,13 +1,15 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace AppTaller
 {
     public partial class Form2 : Form
@@ -273,6 +275,36 @@ namespace AppTaller
                     cn.DescargarConexion();
                 }
             }
+        }
+
+        private void bunifuFlatButton3_Click_1(object sender, EventArgs e)
+        {
+
+            habilitar();
+            string a = Microsoft.VisualBasic.Interaction.InputBox("Ingrese Datos a Buscar");
+            string query = "Select*from Clientes where Nombres='" + a + "'";
+
+           MySqlCommand cm = new MySqlCommand(query, cn.ObtenerConeccion());
+            MySqlDataReader dr = cm.ExecuteReader();
+            if (dr.Read() == true)
+            {
+                txtnombre.Text = dr["Nombres"].ToString();
+               txtid.Text = dr["id"].ToString();
+               txtdireccion.Text = dr["direccion"].ToString();
+               txttelefono.Text = dr["telefono"].ToString();
+               txtemail.Text = dr["email"].ToString();
+               txtdni.Text = dr["dni"].ToString();
+
+
+                
+                // habilitar();
+
+            }
+            else
+            {
+                MessageBox.Show("Datos no encontrado", "sistema");
+            }
+
         }
     }
 }

@@ -24,6 +24,7 @@ namespace AppTaller
         //datos de la empresa
         string nombreEmpresa, direccion,email,Numero;
         string telefono;
+        DateTime fechaentrega;
         
 
         public Form1()
@@ -736,8 +737,22 @@ namespace AppTaller
             e.Graphics.DrawString("Obs: " + txtfalla.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 142));
             e.Graphics.DrawString("Rep: " + txtreparacion.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 152));
             //e.Graphics.DrawString("Fecha de ingreso: " + dtpentrada.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 163));
-            e.Graphics.DrawString("Fecha de Entrega: " + dtpfechaentrega.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 173));
-            e.Graphics.DrawString("_________________________________________", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 180));
+           if (p == 1)
+            {
+                fechaentrega=Convert.ToDateTime(dtpfechaentrega.Text);
+                e.Graphics.DrawString("Estado: " + "INGRESADO", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Point(20, 185));
+
+            }
+            else
+            {
+                fechaentrega=DateTime.Now;
+                e.Graphics.DrawString("Fecha de Entrega: " + fechaentrega, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(20, 173));
+                e.Graphics.DrawString("Estado: " + "ENTREGADO", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, new Point(20, 185));
+
+            }
+               
+            
+            e.Graphics.DrawString("_________________________________________", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(10, 187));
 
             //e.Graphics.DrawString("Pago adelanto: " + txtpagoadelantado.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(80, 200));
             //e.Graphics.DrawString("Saldo : " + txtsaldo.Text, new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(90, 210));
@@ -918,6 +933,8 @@ namespace AppTaller
         {
             if (p == 1)
             {
+                //fechaentrega = dtpentrada.Value;
+                //MessageBox.Show(Convert.ToString(fechaentrega));
                 if (cboclientes.Text == "")
                 {
                     MessageBox.Show("Debes seleccionar el cliente", "Sistema");
@@ -948,7 +965,8 @@ namespace AppTaller
                 {
                     DialogResult dialogResult = MessageBox.Show("Deseas Imprimir el Comprobante ?", "Sistema", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
-                    {
+                    { 
+                       
                         impri();
                         //para imprimir dos veves
                         impri();
@@ -961,10 +979,13 @@ namespace AppTaller
             }
             else
             {
+                //fechaentrega= DateTime.Now;
+                //MessageBox.Show(Convert.ToString(fechaentrega));
                 Actualizar();
                 DialogResult dialogResult = MessageBox.Show("Deseas Imprimir el Comprobante pagado?", "Sistema", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+
                     impri();
                     //para imprimir dos veves
 

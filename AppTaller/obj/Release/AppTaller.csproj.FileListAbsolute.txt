@@ -45,3 +45,4 @@ C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.ex
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.pdb
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.csproj.Up2Date
 C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.Frmgrafico.resources
+C:\Users\LENOVO\OneDrive\Escritorio\SisTaller\AppTaller\obj\Release\AppTaller.FrmbuscarClientes.resources

@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AppTaller
 {
@@ -76,6 +77,9 @@ namespace AppTaller
             txtcodigo.Text = "";
             txtcodigo.Focus();
             panel1.BackgroundImage = null;
+            cbotipopago.Text = "Contado";
+            cbodocumento.Text = "Boleta";
+            cboclientes.Text = "Publico general";
 
 
         }
